@@ -1,0 +1,34 @@
+/*font-family: 'Open Sans', sans-serif;
+font-family: 'Ubuntu', sans-serif;*/
+
+.holder {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.imagencentro {
+    height: 300px;
+    object-fit: cover;
+}
+
+.imagencentro img {
+    opacity: 0.8;
+}
+
+h5 {
+    color: black;
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: 'Ubuntu', 'sans-serif';
+
+}
+
+p {
+    color: black;
+    font-weight: bolder;
+    font-style: oblique;
+    font-size: 20px;
+    font-family: 'Ubuntu', 'sans-serif';
+
+}
