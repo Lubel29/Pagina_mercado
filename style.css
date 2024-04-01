@@ -2,8 +2,20 @@
 font-family: 'Ubuntu', sans-serif;*/
 
 .holder {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.carrito {
+    font-size: 30px;
+}
+
+.navbar-brand {
+    font-size: 40px;
+}
+
+.navbar-toggler {
+    font-size: 20px;
 }
 
 .imagencentro {
@@ -20,8 +32,7 @@ h5 {
     font-style: oblique;
     font-weight: bold;
     font-size: 40px;
-    font-family: 'Ubuntu', 'sans-serif';
-
+    font-family: 'sans-serif';
 }
 
 p {
@@ -29,6 +40,249 @@ p {
     font-weight: bolder;
     font-style: oblique;
     font-size: 20px;
-    font-family: 'Ubuntu', 'sans-serif';
+    font-family: 'sans-serif';
+}
 
+/*Productos*/
+
+.caja {
+    max-width: 1200px;
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    contain: paint;
+}
+
+.caja .caja-items {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 30px;
+    grid-row-gap: 30px;
+    width: 90%;
+}
+
+.item {
+    border-radius: 5%;
+    border-style: double;
+}
+
+.item img {
+    height: 120px;
+    object-fit: cover;
+    margin: auto;
+    display: block;
+    margin-bottom: 10%;
+    margin-right: auto;
+    align-items: center;
+
+}
+
+.item span {
+    font-style: italic;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 10%;
+}
+
+.item button {
+    align-items: center;
+    margin-left: 5%;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-column,
+.order-column,
+.layout-switcher {
+    width: 50%;
+}
+
+.order-dropdown {
+    position: relative;
+}
+
+.order-button {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.order-text {
+    color: #555;
+}
+
+.order-arrow {
+    border: solid #555;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
+
+.order-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    display: none;
+}
+
+.order-option {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    color: #555;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.order-option:hover,
+.order-option.selected {
+    background-color: #f0f0f0;
+}
+
+.flex-container {
+    align-items: center;
+    margin: auto;
+    position: relative;
+    display: flex;
+}
+
+.holder h2 {
+    font-weight: bolder;
+    color: #6b4251;
+    font-size: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 4%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+.cart-content {
+    position: absolute;
+    top: 15px;
+    right: 70px;
+    background-color: rgba(179, 130, 148, 0.9);
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.cart-content h3 {
+    font-size: 15px;
+}
+
+
+.cart-list {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-list li {
+    margin-bottom: 1px;
+}
+
+
+.total-price {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+@media screen and (max-width:800px) {
+    main .holder {
+        width: 100%;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    .holder nav {
+        width: 100%;
+
+    }
+}
+
+/*servicios*/
+
+.servicios p {
+    text-align: center;
+    font-size: 15px;
+    width: 100%;
+    padding: 10px;
+}
+
+.servicios {
+    display: flex;
+    margin-top: 10%;
+}
+
+.izquierda {
+    background-color: #c9b6bd;
+    height: 100vh;
+    width: 50%;
+}
+
+.derecha {
+    background: url(/img/mujer.png);
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 100vh;
+}
+
+.color {
+    color: #661231;
+    font-size: 25px;
+}
+
+/*Nosotros*/
+
+
+.nosotros p {
+    text-align: center;
+    font-size: 15px;
+    width: 100%;
+    padding: 20px;
+}
+
+.nosotros {
+    display: inline-block;
+    background: #e3eeed;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.nosotros img {
+    width: 100px;
+    height: 100px;
+    justify-content: space-between;
+    margin-bottom: 1%;
+    margin-top: 2%;
+    border: 1px solid white;
+    border-radius: 19px 19px 19px 19px;
+    -webkit-border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
 }

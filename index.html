@@ -16,37 +16,40 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Ubuntu:ital,wght@0,300;0,500;1,700&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b2377a7aab.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header class="holder">
         <nav class="navbar" style="background-color: #c9b6bd;">
-            <div class="container">
-                <div class="carrito">
-                    <button i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-                <a href="#" class="navbar-brand"> <span class="text-primary">Market</span>Prime</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS"
-                    aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarS">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Nosotros</a>
+            <a href="#" class="navbar-brand"> <span class="text-primary">Market</span>Prime</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS"
+                aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarS">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                    </ul>
-                </div>
+                    <li class="nav-item">
+                        <a href="#carouselE" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#caja" class="nav-link">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#servicios" class="nav-link">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nosotros" class="nav-link">Nosotros</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div id="cart-content" class="cart-content">
+                <i class="bi bi-cart3"></i>
+                <ul id="cart-list" class="cart-list"></ul>
+                <p id="total-price" class="total-price"></p>
             </div>
         </nav>
 
@@ -58,18 +61,15 @@
                     aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselE" data-bs-slide-to="2" aria-current="true"
                     aria-label="Slide 3"></button>
-
             </div>
-            <div class="carousel-inner">
 
+            <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="imagencentro">
                         <img src="/img/imghome.png" class="d-block w-100" alt="">
                         <div class="carousel-caption">
                             <h5> Frutas y verduras</h5>
-                            <p>
-                                Disfruta de todas las frutas de estacion, frescas y de la mejor calidad.
-                            </p>
+                            <p>Disfruta de todas las frutas de estacion, frescas y de la mejor calidad.</p>
                             <a href="#" class="btn btn-primary mt-3"> Mas informacion</a>
                         </div>
                     </div>
@@ -79,9 +79,7 @@
                         <img src="/img/alimentos-ricos-em-proteina.png" class="d-block w-100" alt="">
                         <div class="carousel-caption">
                             <h5>Productos lacteos y proteicos</h5>
-                            <p>
-                                Productos de canasta basica y mucho mas...
-                            </p>
+                            <p>Productos de canasta basica y mucho mas...</p>
                             <a href="#" class="btn btn-primary mt-3"> Mas informacion</a>
                         </div>
                     </div>
@@ -91,14 +89,11 @@
                         <img src="/img/bakery.jpg" class="d-block w-100" alt="">
                         <div class="carousel-caption">
                             <h5>Panaderia</h5>
-                            <p>
-                                Recien salidos del horno, nuestros mejores panificados!
-                            </p>
+                            <p>Recien salidos del horno, nuestros mejores panificados!</p>
                             <a href="#" class="btn btn-primary mt-3"> Mas informacion</a>
                         </div>
                     </div>
                 </div>
-
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselE" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -109,14 +104,316 @@
                 <span class="visualle-hidden">Siguiente</span>
             </button>
         </div>
+
     </header>
 
+    <main class="holder">
+        <h2>Ofertas! Hasta agotar stock</h2>
+        <div class="flex-container">
+            <div class="order-column">
+                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                <div class="order-dropdown">
+                    <button id="order-button" class="order-button">
+                        <span class="order-text">Ordenar por</span> Relevancia
+                        <span class="order-arrow"></span>
+                    </button>
+                    <div class="order-options" id="order-options">
+                        <button class="order-option selected" data-sort="relevancia">Relevancia</button>
+                        <button class="order-option" data-sort="ventas">Ventas</button>
+                        <button class="order-option" data-sort="reciente">Más reciente</button>
+                        <button class="order-option" data-sort="precio-alto">Precios más alto</button>
+                        <button class="order-option" data-sort="precio-bajo">Precios más bajo</button>
+                        <button class="order-option" data-sort="nombre-creciente">Nombre, creciente</button>
+                        <button class="order-option" data-sort="nombre-decreciente">Nombre, decreciente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <section id="caja" class="caja">
+            <div class="caja-items">
+                <div class="item">
+                    <span class="titulo-item">Pan de salvado</span>
+                    <img src="img/pandesalvado.jpg" alt="" class="img-item">
+                    <span class="precio-item">$1800</span>
+                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                </div>
+                <div class="item">
+                    <span class="titulo-item">Manzana x kg</span>
+                    <img src="img/pr1.png" alt="" class="img-item">
+                    <span class="precio-item">$1500</span>
+                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                </div>
+                <div class="item">
+                    <span class="titulo-item"> Naranja x kg</span>
+                    <img src="img/pr2.png" alt="" class="img-item">
+                    <span class="precio-item">$1800</span>
+                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                </div>
+                <div class="item">
+                    <span class="titulo-item"> Arandanos x gr</span>
+                    <img src="img/pr3.png" alt="" class="img-item">
+                    <span class="precio-item">$2000</span>
+                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                </div>
+                <div class="item">
+                    <span class="titulo-item"> Jugo de frutas</span>
+                    <img src="img/f2.png" alt="" class="img-item">
+                    <span class="precio-item">$2500</span>
+                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                </div>
+                <div class="item">
+                    <span class="titulo-item"> Granola </span>
+                    <img src="img/f4.png" alt="" class="img-item">
+                    <span class="precio-item">Sin stock</span>
+                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                </div>
+                <div class="item">
+                    <span class="titulo-item"> Banana x kg </span>
+                    <img src="img/pr6.png" alt="" class="img-item">
+                    <span class="precio-item">$1600</span>
+                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                </div>
+                <div class="item">
+                    <span class="titulo-item"> Frutilla x kg </span>
+                    <img src="img/pr5.png" alt="" class="img-item">
+                    <span class="precio-item">$2600</span>
+                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                </div>
+            </div>
+        </section>
 
+        <section id="servicios" class="servicios">
+            <div class="izquierda">
+                <h2>Servicios</h2>
+                <p>En MarketPrime, nos complace ofrecerte una experiencia de compra conveniente y sin complicaciones con
+                    nuestro servicio de take away. Sabemos lo ocupada que puede estar tu vida y queremos facilitarte el
+                    acceso a productos frescos y deliciosos de nuestra tienda, incluso cuando estás en movimiento.
+
+                    Nuestro servicio de take away te permite ordenar una amplia variedad de productos desde la comodidad
+                    de tu hogar o mientras estás en movimiento, y recogerlos en nuestro establecimiento en el momento
+                    que mejor te convenga. Ya sea que estés buscando una comida rápida para llevar a casa después del
+                    trabajo, un refrigerio saludable para llevar contigo durante el día o ingredientes frescos para tu
+                    próxima comida.</p>
+
+                <p><span class="color">¿Cómo funciona nuestro servicio de take away?</p></span>
+
+                <p><i class="fa-solid fa-check-square"></i>Explora nuestro completo catálogo en línea: Navega por
+                    nuestra selección de productos frescos, comidas preparadas, productos de panadería, frutas y
+                    verduras, y mucho más desde la comodidad de tu hogar a través de nuestra página web.</p>
+
+                <p><i class="fa-solid fa-check-square"></i>Selecciona tus productos favoritos: Agrega tus productos
+                    preferidos a tu carrito de compras y personaliza tu pedido según tus necesidades individuales.</p>
+
+                <p><i class="fa-solid fa-check-square"></i>Realiza tu pedido: Una vez que hayas terminado de seleccionar
+                    tus productos, procede al proceso de pago seguro y rápido.</p>
+
+                <p><i class="fa-solid fa-check-square"></i>Elige tu hora de recogida: Selecciona el momento más
+                    conveniente para ti para recoger tu pedido en nuestro supermercado.</p>
+
+                <p><i class="fa-solid fa-check-square"></i>Recoge tu pedido: ¡Es hora de recoger tus productos frescos!
+                    Visítanos en la hora programada y nuestro amable equipo estará listo para entregarte tu pedido.</p>
+
+                <p>En MarketPrime, nos comprometemos a ofrecerte productos de la más alta calidad y un servicio
+                    excepcional en cada visita. No dudes en ponerte en contacto con nuestro equipo si tienes alguna
+                    pregunta o necesitas asistencia adicional con tu pedido de take away.
+
+                    Gracias por elegir MarketPrime para satisfacer todas tus necesidades de compra. ¡Esperamos verte
+                    pronto!
+
+                    ¡Haz tu pedido de take away ahora y disfruta de la conveniencia de MarketPrime en tus manos!</p>
+            </div>
+            <div class="derecha">
+            </div>
+        </section>
+        <section id="nosotros" class="nosotros">
+            <div className="staff">
+                <h2>Nosotros</h2>
+                <div className="personas">
+                    <div className="persona">
+                        <img src="/img/thumbnail-ens-1024x576.png" alt="Gabriel Martinez" />
+                        <h4> Gabriel Martinez</h4>
+                        <h5> Jefe </h5>
+                        <p>
+                            "Como jefe de supermercado, mi día comienza temprano. Antes de que abramos las puertas al
+                            público, me aseguro de que todo esté en orden. Reviso los horarios del personal, asigno las
+                            tareas del día y me aseguro de que los estantes estén bien surtidos.
+
+                            Una vez que abrimos, mi enfoque principal es el servicio al cliente. Me encanta interactuar
+                            con nuestros clientes, ayudarlos a encontrar lo que necesitan y asegurarme de que tengan una
+                            experiencia positiva en nuestra tienda. Si hay algún problema o queja, estoy ahí para
+                            resolverlo de inmediato y asegurarme de que se vayan satisfechos.
+
+                            Por supuesto, también tengo que ocuparme de las operaciones diarias del supermercado. Eso
+                            significa mantener un ojo en el inventario, hacer pedidos a nuestros proveedores y
+                            asegurarme de que todo esté en su lugar. Controlar los costos y maximizar la rentabilidad
+                            también es una parte importante de mi trabajo.
+
+                            Además de eso, siempre estoy pensando en cómo mejorar. Ya sea desarrollando nuevas
+                            estrategias para aumentar las ventas o buscando formas de hacer que nuestra tienda sea aún
+                            más acogedora para nuestros clientes, estoy constantemente buscando formas de hacer que
+                            nuestro negocio sea aún mejor.
+
+                            Por supuesto, también hay días difíciles. Puede que tengamos problemas con la entrega de un
+                            proveedor o que tengamos que lidiar con una situación complicada con un cliente. Pero al
+                            final del día, lo que realmente me motiva es ver a mi equipo trabajar duro y ver a nuestros
+                            clientes satisfechos. Eso es lo que me hace amar mi trabajo como jefe de supermercado."
+
+
+                        </p>
+                    </div>
+                    <div className="persona">
+                        <img src="/img/cajera.jpg" alt="Laura pausini" />
+                        <h4> Laura Pausini </h4>
+                        <h5> Cajera </h5>
+                        <p>
+                            "Cuando llego al supermercado, me pongo mi uniforme con una sonrisa en el rostro.
+                            Para mí, ser cajera es más que simplemente pasar productos por la línea de caja. Es ser la
+                            primera y última impresión que los clientes tienen al visitar nuestra tienda.
+
+                            Mi turno comienza con una breve reunión de equipo, donde nos ponemos al día sobre cualquier
+                            cambio en las políticas o procedimientos. Luego me dirijo a mi caja asignada y me preparo
+                            para recibir a los clientes.
+
+                            Durante mi turno, me esfuerzo por ofrecer un servicio rápido y amable. Saludo a cada cliente
+                            con una sonrisa, escaneo sus productos con eficiencia y precisión, y respondo a cualquier
+                            pregunta que puedan tener sobre los productos o el proceso de pago.
+
+                            Pero ser cajera también significa estar preparada para enfrentar desafíos. Puede que tenga
+                            que lidiar con clientes impacientes o con problemas técnicos en la caja registradora. En
+                            esos momentos, es importante mantener la calma y tratar de resolver la situación de la mejor
+                            manera posible.
+
+                            A lo largo del día, también estoy atenta a posibles fraudes o errores en los precios de los
+                            productos. Es mi responsabilidad asegurarme de que cada transacción sea precisa y justa para
+                            nuestros clientes.
+
+                            Y al final del día, cuando cierro mi caja y me despido de mis compañeros de trabajo, me
+                            siento satisfecha sabiendo que he hecho una diferencia. Ser cajera puede ser agotador a
+                            veces, pero ver a los clientes salir de la tienda con una sonrisa en el rostro hace que todo
+                            valga la pena."
+
+                        </p>
+                    </div>
+                    <div className="persona">
+                        <img src="/img/supervisor.jpg" alt="Raul lopez" />
+                        <h4> Raul lopez </h4>
+                        <h5> Supervisor </h5>
+                        <p>
+                            "Comienzo mi jornada con una lista interminable de
+                            tareas por delante. Mi rol como supervisor implica coordinar y asegurar que todas las
+                            operaciones de la tienda funcionen sin problemas.
+
+                            Mi primera tarea es revisar el estado de la tienda: los estantes están bien abastecidos, los
+                            pasillos están limpios y ordenados, y el equipo está listo para comenzar. Luego, me reúno
+                            con los miembros del equipo para asignar responsabilidades y repasar los objetivos del día.
+
+                            A lo largo del día, estoy constantemente monitoreando el rendimiento del equipo y abordando
+                            cualquier problema que surja. Esto podría incluir resolver disputas entre empleados,
+                            proporcionar orientación sobre políticas y procedimientos, o intervenir si hay problemas con
+                            los clientes.
+
+                            Una parte importante de mi trabajo es garantizar que se cumplan los estándares de servicio
+                            al cliente. Esto implica capacitar al personal en técnicas de atención al cliente, realizar
+                            controles de calidad en el servicio y abordar cualquier problema o queja de los clientes de
+                            manera rápida y efectiva.
+
+                            También soy responsable de gestionar el inventario y las existencias. Esto implica coordinar
+                            las entregas de productos, supervisar los niveles de inventario y tomar medidas para
+                            prevenir pérdidas o desperdicios.
+
+                            Además, parte de mi responsabilidad es garantizar el cumplimiento de las normativas de
+                            seguridad e higiene. Esto implica realizar inspecciones regulares, proporcionar capacitación
+                            al personal y asegurarme de que se tomen las medidas adecuadas para mantener un entorno de
+                            trabajo seguro.
+
+                            Al final del día, mi mayor satisfacción proviene de ver a mi equipo trabajar en armonía y
+                            ver a nuestros clientes satisfechos con su experiencia en la tienda. Aunque ser supervisor
+                            puede ser exigente, es gratificante saber que estoy contribuyendo al éxito del supermercado
+                            y al bienestar de nuestro equipo y clientes."
+
+
+                        </p>
+                    </div>
+                    <div className="persona">
+                        <img src="/img/repositora.png" alt="Gimena fernandez" />
+                        <h4> Gimena fernandez</h4>
+                        <h5> Repositora </h5>
+                        <p>
+                            "Me sumerjo en la rutina de reponer los estantes con
+                            productos frescos y atractivos. Pero hubo un día que se destacó entre los demás, un momento
+                            que siempre recordaré.
+
+                            Era un día soleado de verano y la tienda estaba particularmente animada. Mientras caminaba
+                            por los pasillos, me detuve junto a la sección de productos frescos para reponer las frutas
+                            y verduras. En ese momento, una señora mayor se acercó con una sonrisa cálida en su rostro.
+
+                            Ella me contó que había estado buscando una fruta en particular, un tipo de uva que había
+                            probado en su infancia y que había sido difícil de encontrar últimamente. Inmediatamente,
+                            sentí empatía por su búsqueda y me propuse ayudarla.
+
+                            Después de una breve conversación, recordé que habíamos recibido un nuevo suministro de uvas
+                            especiales esa mañana. Me dirigí rápidamente al almacén y busqué entre las cajas hasta que
+                            finalmente encontré las uvas que estaba buscando. Con cuidado, seleccioné las mejores y
+                            volví rápidamente a la señora.
+
+                            Cuando le entregué las uvas, su rostro se iluminó de alegría. Me contó lo emocionada que
+                            estaba de poder saborear esas uvas nuevamente después de tanto tiempo. Sentí una gran
+                            satisfacción al haber podido hacer su día un poco más especial.
+
+                            Ese momento me recordó la importancia de la atención al cliente y cómo pequeños gestos
+                            pueden marcar una gran diferencia en la experiencia de compra de alguien. Desde entonces,
+                            siempre busco oportunidades para hacer que los clientes se sientan especiales y valorados
+                            mientras realizan sus compras en el supermercado."
+
+
+                        </p>
+                    </div>
+                    <div className="persona">
+                        <img src="/img/repositor.png" alt="Gerardo rodriguez" />
+                        <h4> Gerardo rodriguez </h4>
+                        <h5> Repositor </h5>
+                        <p>
+                            "Cada mañana, llego al supermercado con energía y entusiasmo para comenzar mi jornada como
+                            repositor. Mi principal responsabilidad es garantizar que los estantes estén bien
+                            abastecidos y que los productos estén correctamente organizados para que los clientes puedan
+                            encontrar lo que necesitan fácilmente.
+
+                            Mi día comienza con un recorrido por la tienda para evaluar qué productos necesitan ser
+                            reabastecidos. Luego, me dirijo al almacén para recoger los productos necesarios y comienzo
+                            a llenar los estantes. Me aseguro de seguir un sistema organizado para que los productos
+                            estén ordenados por categoría y fecha de vencimiento.
+
+                            Durante mi turno, también estoy atento a cualquier producto dañado o caducado que necesite
+                            ser retirado de los estantes. Es importante mantener un alto estándar de calidad en la
+                            presentación de los productos para garantizar la satisfacción del cliente.
+
+                            Además de reponer los productos, también estoy disponible para ayudar a los clientes a
+                            encontrar lo que están buscando y responder cualquier pregunta que puedan tener sobre los
+                            productos o su ubicación en la tienda. Me esfuerzo por ofrecer un servicio amable y atento
+                            en todo momento.
+
+                            A lo largo del día, trabajo en estrecha colaboración con otros miembros del equipo,
+                            comunicando cualquier necesidad de reabastecimiento o problemas en los estantes. Trabajamos
+                            juntos para mantener la tienda limpia, ordenada y bien surtida en todo momento.
+
+                            Al final del día, me siento satisfecho al ver los estantes llenos y ordenados, listos para
+                            recibir a los clientes del día siguiente. Ser repositor puede ser un trabajo físicamente
+                            exigente, pero la satisfacción de contribuir al funcionamiento suave y eficiente de la
+                            tienda lo hace gratificante."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="Script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 </body>
-
 <footer>
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <p class="col-md-4 mb-0 text-muted">© 2024 MarketPrime, Inc</p>
@@ -136,12 +433,6 @@
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
         </ul>
     </footer>
-
-    </div>
-
-    </div>
-    </div>
-
 </footer>
 
 </html>
