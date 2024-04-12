@@ -1,59 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const cartIcon = document.querySelector('.bi bi-cart3');
 
-    const cartContent = document.querySelector('.cart-content');
+/*bienvenida*/
+let bienvenida = prompt("Hola, bienvenido a MarketPrime. ¿Cual es tu nombre?");
+alert(`Hola ${bienvenida}, bienvenido a MarketPrime. Espero disfrutes de nuestros precios bajos`);
 
-    const cartList = document.getElementById('cart-list');
+/*Prompt deseas comprar*/
+let seleccion = prompt("¿Deseas comprar?");
 
-    const totalPriceElement = document.getElementById('total-price');
+while (seleccion != "si" && seleccion != "no") {
+    alert("Por favor, ingresa 'si' o 'no' en minusculas");
+    seleccion = prompt("¿Deseas comprar?");
+}
+if (seleccion == "si") {
+    alert("Genial, elige un producto");
+} else if (seleccion == "no") {
+    alert(`Te esperamos pronto!, ${bienvenida}`);
+};
 
+/*carrito*/
+let carrito = [];
+let productos = [
+    { nombre: "Pan de salvado", precio: 1800 },
+    { nombre: "Manzana x kg", precio: 1500 },
+    { nombre: "Naranja x kg", precio: 1800 },
+    { nombre: "Arandanos x gr", precio: 2000 },
+    { nombre: "jugo de frutas", precio: 2500 },
+    { nombre: "Granola x kg", precio: 0 },
+    { nombre: "banana x kg", precio: 1600 },
+    { nombre: "Frutilla x kg", precio: 2600 },
+];
 
-    const selectedProducts = [];
+/*Stock*/
+function Stock() {
+    alert("No hay stock de " + productos[5].nombre); 
+}
 
-    console.log(cartIcon)
-
-    function calcularTotal() {
-        let total = 0;
-        selectedProducts.forEach(product => {
-            total += product.price;
-        });
-        return total;
-    }
-
-
-    function actualizarLista() {
-
-        cartList.innerHTML = '';
-
-        selectedProducts.forEach(product => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${product.title} - $${product.price.toFixed(2)}`;
-            cartList.appendChild(listItem);
-        });
-
-
-        totalPriceElement.textContent = `Total de la compra: $${calcularTotal().toFixed(2)}`;
-    }
-
-
-    const addToCartButtons = document.querySelectorAll('.btn-outline-danger');
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const title = button.parentElement.querySelector('.titulo-item').textContent;
-            const priceString = button.parentElement.querySelector('.precio-item').textContent.replace('$', '');
-            const price = parseFloat(priceString) || 0; // Convertir el precio a número, o 0 si no se puede convertir
-            selectedProducts.push({ title, price });
-            actualizarLista();
-        });
-    });
-
-})
-
-const myCarouselElement = document.querySelector('#mycarousel')
-
-const carousel = new bootstrap.Carousel(myCarouselElement, {
-    interval: 2000,
-    touch: false
-})
-
-
+let productoSinStock = new Stock();

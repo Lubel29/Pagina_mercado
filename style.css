@@ -5,7 +5,6 @@ header {
     margin-left: 3%;
     margin-right: 3%;
 }
-
 .holder {
     margin-left: 1%;
     margin-right: 1%;
@@ -63,6 +62,7 @@ header {
 
 .carrito {
     font-size: 30px;
+    margin-bottom: 50px;
 }
 
 .navbar-brand {
@@ -99,6 +99,7 @@ p {
     display: flex;
     justify-content: space-between;
     contain: paint;
+    margin-bottom: 50px;
 }
 
 .caja .caja-items {
@@ -272,7 +273,7 @@ p {
 .servicios {
     display: flex;
     margin-top: 10%;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 
 }
 
@@ -290,7 +291,6 @@ p {
     width: 40%;
     height: 100vh;
 }
-
 .color {
     color: #661231;
     font-size: 25px;
@@ -311,7 +311,7 @@ p {
 .nosotros h2 {
     padding-right: 2rem;
     padding-left: 2rem;
-}
+};
 
 .nosotros h5 {
     font-size: larger;
@@ -325,7 +325,7 @@ p {
     box-sizing: border-box;
     text-align: center;
     margin-top: 20px;
-
+    margin-bottom: 50px;
 }
 
 .nosotros img {
@@ -353,3 +353,88 @@ p {
         font-size: 30px;
     }
 }
+
+/*FIN PRODUCTOS*/
+
+/*CONTACTO*/
+
+form {
+    padding:auto;
+    margin-top: 10%;
+    box-shadow: 0 0 20px black;
+    border-radius: 20px;
+    text-align: center;
+    width: 80%;
+    margin-right: 5%;
+    background-color:rgba(179, 130, 148, 0.9);
+    margin-bottom: 50px;
+
+}
+
+.formulario {
+    display:flex;
+    flex-direction: column;
+    text-align: center; 
+    padding: auto;
+}
+
+.formulario h2 {
+    color: #ffffff;
+    font-size: 50px;
+}
+
+label {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+input,
+textarea {
+    padding: 15px 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    margin-bottom: 20px;
+    outline: none;
+    cursor: pointer;
+    width: 40%;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgb(156, 156, 156);
+}
+
+.formulario input[type="submit"]{
+    width: 20%;
+}
+
+.btn {
+    border: 0;
+    border-radius: 25px;
+    background-color: #5fc0b8;
+}
+
+.formulario input[type="submit"]:hover{
+    background-color: #aabdbb;
+}
+
+.contacto{
+    gap: 24px;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.contacto div{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-TOP: 10%;
+}
+
+.contacto h2{
+    font-size: 40px;
+}
+
+/*fin CONTACTO*/
