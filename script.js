@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cartIcon = document.querySelector('.bi bi-cart3');
-    
+
     const cartContent = document.querySelector('.cart-content');
-    
+
     const cartList = document.getElementById('cart-list');
-    
+
     const totalPriceElement = document.getElementById('total-price');
 
 
@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return total;
     }
 
-    
+
     function actualizarLista() {
-        
+
         cartList.innerHTML = '';
 
         selectedProducts.forEach(product => {
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
             cartList.appendChild(listItem);
         });
 
-        
+
         totalPriceElement.textContent = `Total de la compra: $${calcularTotal().toFixed(2)}`;
     }
 
-   
+
     const addToCartButtons = document.querySelectorAll('.btn-outline-danger');
     addToCartButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -48,3 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 })
+
+const myCarouselElement = document.querySelector('#mycarousel')
+
+const carousel = new bootstrap.Carousel(myCarouselElement, {
+    interval: 2000,
+    touch: false
+})
+
+
