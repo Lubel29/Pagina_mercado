@@ -11,9 +11,9 @@ while (seleccion != "si" && seleccion != "no") {
     seleccion = prompt("¿Deseas comprar?");
 }
 if (seleccion == "si") {
-    alert("Genial, elige un producto");
+    alert("Genial! compras mayores a $10.000 envío gratis");
 } else if (seleccion == "no") {
-    alert(`Te esperamos pronto!, ${bienvenida}`);
+    alert(`Te invito a navegar por nuestra pagina, ${bienvenida}, para comprar seleccionar un producto del carrito.`);
 };
 
 /*carrito*/
@@ -29,9 +29,15 @@ let productos = [
     { nombre: "Frutilla x kg", precio: 2600 },
 ];
 
+/*Recorrido del carrito de compras*/
+
+for (let i = 0; i < productos.length; i++) {
+    console.log(productos[i]);
+}
+
 /*Stock*/
 function Stock() {
-    alert("No hay stock de " + productos[5].nombre); 
+    alert("Por el momento no hay stock de " + productos[5].nombre);
 }
 
 let productoSinStock = new Stock();

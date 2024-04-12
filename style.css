@@ -1,27 +1,46 @@
 /*font-family: 'Open Sans', sans-serif;
 font-family: 'Ubuntu', sans-serif;*/
 
-header {
-    margin-left: 3%;
-    margin-right: 3%;
+.body {
+    font-family: 'Open Sans', sans-serif;
 }
-.holder {
-    margin-left: 1%;
-    margin-right: 1%;
+
+.navbar {
+    top: 0;
+    position: fixed;
     width: 100%;
 }
 
-.carousel-item img{
-    opacity: 0.6;
-    width:fit-content;
+.holder {
+    width: 100%;
 }
 
-.carousel-item{
+.carousel-item img {
+    opacity: 0.6;
+    width: fit-content;
+}
+
+.carousel-item {
     height: 400px;
 }
 
-.carousel-item p{
+.carousel-item p {
     color: #000000;
+}
+
+.carousel-caption h5 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.navbar-brand {
+    font-size: 40px;
+}
+
+.navbar-toggler {
+    font-size: 20px;
 }
 
 
@@ -55,23 +74,12 @@ header {
     transition: width 0.3s;
 }
 
-.nuestros-productos:hover::;
+.nuestros-productos:hover::after {
+    width: 100%;
+}
 
 /*botones*/
 
-
-.carrito {
-    font-size: 30px;
-    margin-bottom: 50px;
-}
-
-.navbar-brand {
-    font-size: 40px;
-}
-
-.navbar-toggler {
-    font-size: 20px;
-}
 
 h5 {
     color: rgb(7, 7, 7);
@@ -136,7 +144,7 @@ p {
 
 .item button {
     align-items: center;
-    margin-left: 5%;
+    margin-left: 7%;
 }
 
 .flex-container {
@@ -224,15 +232,14 @@ p {
 }
 
 .cart-content {
-    position:sticky;
+    position: sticky;
     top: 15px;
-    right: 70px;
     background-color: rgba(179, 130, 148, 0.9);
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-right: 10px;
+    margin-right: 50px;
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -291,6 +298,7 @@ p {
     width: 40%;
     height: 100vh;
 }
+
 .color {
     color: #661231;
     font-size: 25px;
@@ -311,7 +319,9 @@ p {
 .nosotros h2 {
     padding-right: 2rem;
     padding-left: 2rem;
-};
+}
+
+;
 
 .nosotros h5 {
     font-size: larger;
@@ -345,13 +355,19 @@ p {
 
 
 @media screen and (max-width: 768px) {
+    .header {
+        width: 100%;
+    }
+
+    .body {
+        width: 100%;
+    }
+
     .holder {
         width: 100%;
     }
 
-    .nuestros-productos {
-        font-size: 30px;
-    }
+
 }
 
 /*FIN PRODUCTOS*/
@@ -359,28 +375,27 @@ p {
 /*CONTACTO*/
 
 form {
-    padding:auto;
-    margin-top: 10%;
+    margin-top: 20px;
     box-shadow: 0 0 20px black;
     border-radius: 20px;
     text-align: center;
     width: 80%;
     margin-right: 5%;
-    background-color:rgba(179, 130, 148, 0.9);
+    background-color: rgba(179, 130, 148, 0.9);
     margin-bottom: 50px;
-
 }
 
 .formulario {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    text-align: center; 
-    padding: auto;
+    text-align: center;
+
 }
 
 .formulario h2 {
     color: #ffffff;
     font-size: 50px;
+
 }
 
 label {
@@ -406,7 +421,7 @@ textarea::placeholder {
     color: rgb(156, 156, 156);
 }
 
-.formulario input[type="submit"]{
+.formulario input[type="submit"] {
     width: 20%;
 }
 
@@ -416,25 +431,28 @@ textarea::placeholder {
     background-color: #5fc0b8;
 }
 
-.formulario input[type="submit"]:hover{
+.formulario input[type="submit"]:hover {
     background-color: #aabdbb;
 }
 
-.contacto{
+.contacto {
     gap: 24px;
     display: flex;
     margin-bottom: 50px;
 }
 
-.contacto div{
+.contacto div {
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin-TOP: 10%;
+    margin-top: 2%;
+    padding-left: 0%;
+    padding-right: 0%;
 }
 
-.contacto h2{
+.contacto h2 {
     font-size: 40px;
+
 }
 
 /*fin CONTACTO*/
