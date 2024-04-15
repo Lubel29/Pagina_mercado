@@ -52,3 +52,4 @@ formContact.addEventListener('submit', (event) => {
     alert('Mail enviado correctamente');
     formContact.reset();
 });
+
