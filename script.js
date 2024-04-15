@@ -35,9 +35,20 @@ for (let i = 0; i < productos.length; i++) {
     console.log(productos[i]);
 }
 
+
 /*Stock*/
 function Stock() {
     alert("Por el momento no hay stock de " + productos[5].nombre);
 }
 
 let productoSinStock = new Stock();
+
+/*Contacto*/
+
+const formContact = document.getElementById('formContact');
+
+formContact.addEventListener('submit', (event) => {
+    event.preventDefault(); 
+    alert('Mail enviado correctamente');
+    formContact.reset();
+});
