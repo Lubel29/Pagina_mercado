@@ -26,11 +26,12 @@ font-family: 'Ubuntu', sans-serif;*/
 
 .carousel-item p {
     color: #000000;
+    font-size: 20px;
 }
 
 .carousel-caption h5 {
     font-family: 'Ubuntu', sans-serif;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bold;
     color: #000000;
 }
@@ -41,6 +42,13 @@ font-family: 'Ubuntu', sans-serif;*/
 
 .navbar-toggler {
     font-size: 20px;
+}
+
+.collapse p{
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #000000;
+    opacity: 0.8;
+    margin-top: 2%;
 }
 
 
@@ -97,6 +105,10 @@ p {
     font-family: 'sans-serif';
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
+}
 
 /*Productos*/
 
@@ -319,6 +331,8 @@ p {
 .nosotros h2 {
     padding-right: 2rem;
     padding-left: 2rem;
+    align-content: center;
+    margin: auto;
 }
 
 ;
@@ -379,9 +393,10 @@ form {
     box-shadow: 0 0 20px black;
     border-radius: 20px;
     text-align: center;
-    width: 80%;
+    width: 50%;
     margin-right: 5%;
     background-color: rgba(179, 130, 148, 0.9);
+    opacity: 0.8;
     margin-bottom: 50px;
 }
 
@@ -394,7 +409,7 @@ form {
 
 .formulario h2 {
     color: #ffffff;
-    font-size: 50px;
+    font-size: 40px;
 
 }
 
@@ -413,7 +428,8 @@ textarea {
     margin-bottom: 20px;
     outline: none;
     cursor: pointer;
-    width: 40%;
+    width: 60%;
+    resize: none;
 }
 
 input::placeholder,
