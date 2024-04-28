@@ -1,8 +1,10 @@
 /*font-family: 'Open Sans', sans-serif;
 font-family: 'Ubuntu', sans-serif;*/
+/*rgba(179, 130, 148, 0.9);*/
 
 .body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'ubuntu', sans-serif;
+    width: 100%;
 }
 
 .navbar {
@@ -14,6 +16,8 @@ font-family: 'Ubuntu', sans-serif;*/
 .holder {
     width: 100%;
 }
+
+/*carrousel*/
 
 .carousel-item img {
     opacity: 0.6;
@@ -44,11 +48,69 @@ font-family: 'Ubuntu', sans-serif;*/
     font-size: 20px;
 }
 
-.collapse p{
+.collapse p {
     color: rgba(255, 255, 255, 0.9);
     background-color: #000000;
     opacity: 0.8;
     margin-top: 2%;
+}
+
+/*carrito*/
+
+.cart {
+    top: 0;
+    right: 0;
+    width:360px;
+    min-height: 100vh;
+    padding: 20px;;
+    margin-left: 60px;
+    background: var(--container-color);
+    box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+    transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+#cart-icon {
+    position: relative;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+#cart-icon[data-quantitiy]::after {
+    contain: '';
+}
+
+#cart-icon[data-quantitiy]::after {
+    contain: '';
+    right: -12px;
+    width: 20px;
+    height: 20px;
+    background: var(--text-color);
+}
+
+h3.cart-title {
+    text-align: center;
+    font-size: 2.0rem;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    background-color:rgba(179, 130, 148, 0.9) ;
+}
+
+.total {
+    display: flex;
+    justify-content:flex-start;
+    margin-top: 1.5rem;
+}
+
+.total-title {
+    font-size: 1.2rem;
+    font-weight: 100;
+    margin-top: 1rem;
+}
+
+.total-price {    
+    font-size: 1.2rem;
+    margin: 1rem 0 0 0.7rem;
 }
 
 
@@ -110,6 +172,22 @@ p {
     background-color: black;
 }
 
+
+.btn-descuento {
+    background-color: rgba(179, 130, 148, 0.9);
+    color: white;
+    border-style: dashed;
+}
+
+.btn-descuento,
+.btn-buy {
+    margin-top: 30%;
+    border-radius: 10%;
+    border-width: 3px;
+    font-size: 1.3rem;
+}
+
+
 /*Productos*/
 
 .caja {
@@ -122,7 +200,7 @@ p {
     margin-bottom: 50px;
 }
 
-.caja .caja-items {
+.cajaItems {
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -271,11 +349,6 @@ p {
     margin-bottom: 1px;
 }
 
-
-.total-price {
-    margin-top: 10px;
-    font-weight: bold;
-}
 
 
 /*servicios*/

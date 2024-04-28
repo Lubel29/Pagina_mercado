@@ -45,12 +45,12 @@
                     </li>
                 </ul>
             </div>
-            <div class="cart-content">
-                <i class="bi bi-cart3"></i>
-                <ul id="cart-list" class="cart-list"></ul>
-                <p id="total-price" class="total-price"></p>
+
+            <div i class="bx bx-shopping-bag" id="cart-icon">
+
             </div>
         </nav>
+
     </header>
 
 
@@ -153,56 +153,68 @@
         </div>
         <hr>
         <section id="caja" class="caja">
-            <div class="caja-items">
-                <div class="item">
-                    <span class="titulo-item">Pan de salvado</span>
+            <div class="cajaItems">
+                <div class="item" data-id=" 1">
+                    <span class="nombre" data-nombre='Pan de salvado' data precio="1800"> Pan de salvado</span>
                     <img src="img/pandesalvado.jpg" alt="" class="img-item">
-                    <span class="precio-item">$1800</span>
+                    <span class="precio">$1800</span>
                     <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
                 </div>
-                <div class="item">
-                    <span class="titulo-item">Manzana x kg</span>
+                <div class="item" data-id =" 2">
+                    <span class="nombre" data-nombre='Manzana' data precio="1500">Manzana x kg</span>
                     <img src="img/pr1.png" alt="" class="img-item">
-                    <span class="precio-item">$1500</span>
+                    <span class="precio">$1500</span>
                     <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
                 </div>
-                <div class="item">
-                    <span class="titulo-item"> Naranja x kg</span>
+                <div class="item" data-id=" 3">
+                    <span class="nombre" data-nombre='Naranja' data precio="1800"> Naranja x kg</span>
                     <img src="img/pr2.png" alt="" class="img-item">
-                    <span class="precio-item">$1800</span>
+                    <span class="precio">$1800</span>
                     <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
                 </div>
-                <div class="item">
-                    <span class="titulo-item"> Arandanos x gr</span>
+                <div class="item" data-id=" 4">
+                    <span class="nombre" data-nombre='Arandanos' data precio="2000"> Arandanos x gr</span>
                     <img src="img/pr3.png" alt="" class="img-item">
-                    <span class="precio-item">$2000</span>
+                    <span class="precio">$2000</span>
                     <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
                 </div>
-                <div class="item">
-                    <span class="titulo-item"> Jugo de frutas</span>
+                <div class="item" data-id=" 5">
+                    <span class="nombre" data-nombre='Jugo de frutas' data precio="2500"> Jugo de frutas</span>
                     <img src="img/f2.png" alt="" class="img-item">
-                    <span class="precio-item">$2500</span>
+                    <span class="precio">$2500</span>
                     <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
                 </div>
-                <div class="item">
-                    <span class="titulo-item"> Granola </span>
+                <div class="item" data-id=" 6">
+                    <span class="nombre" data-nombre='Granola' data precio="2800"> Granola </span>
                     <img src="img/f4.png" alt="" class="img-item">
-                    <span class="precio-item">Sin Stock</span>
+                    <span class="precio">$2800</span>
                     <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
                 </div>
-                <div class="item">
-                    <span class="titulo-item"> Banana x kg </span>
+                <div class="item" data-id=" 7">
+                    <span class="nombre" data-nombre='Banana' data precio="1600"> Banana x kg </span>
                     <img src="img/pr6.png" alt="" class="img-item">
-                    <span class="precio-item">$1600</span>
+                    <span class="precio">$1600</span>
                     <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
                 </div>
-                <div class="item">
-                    <span class="titulo-item"> Frutilla x kg </span>
+                <div class="item" data-id="8">
+                    <span class="nombre" data-nombre='Frutilla' data precio="$1800"> Frutilla x kg </span>
                     <img src="img/pr5.png" alt="" class="img-item">
-                    <span class="precio-item">$2600</span>
+                    <span class="precio">$2600</span>
                     <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
                 </div>
             </div>
+
+            <div class="cart">
+                <i class="fa-solid fa-cart-shopping" id="cart-icon" data-quantitiy="0"></i>
+                <h3 class="cart-title"> Carrito </h3>
+                <div class="total">
+                    <div class="total-title">Total</div>
+                    <div class="total-price"> $0 </div>
+                </div>
+                <button type="button" class="btn-buy"> Pagar </button>
+                <button type="button" class="btn-descuento"> Codigo de descuento </button>
+            </div>
+
         </section>
 
         <section id="servicios" class="servicios">
@@ -253,7 +265,8 @@
                     Gracias por elegir MarketPrime para satisfacer todas tus necesidades de compra. ¡Esperamos verte
                     pronto!
 
-                    ¡Haz tu pedido de take away ahora y disfruta de la conveniencia de MarketPrime en tus manos!</p>
+                    ¡Haz tu pedido de take away ahora y disfruta de la conveniencia de MarketPrime en tus manos!
+                </p>
             </div>
             <div class="derecha">
             </div>
@@ -434,6 +447,7 @@
                         <input class="btn" type="submit" value="Enviar">
                     </div>
                 </div>
+                <div id="respuesta-envio"></div>
             </form>
         </section>
     </main>
