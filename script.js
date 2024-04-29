@@ -87,7 +87,7 @@ function calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoD
 
 let codigoDescuentoIngresado = prompt("Ingresa el Código de descuento");
 
-if (!isNaN(parseInt(codigoDescuentoIngresado))) {
+if ((parseInt(codigoDescuentoIngresado))) {
     let totalCarritoConDescuento = calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoDescuentoIngresado);
     console.log(`El total de tu carrito con descuento es: $${totalCarritoConDescuento}`);
 } else {
