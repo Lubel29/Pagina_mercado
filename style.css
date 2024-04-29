@@ -14,7 +14,8 @@ font-family: 'Ubuntu', sans-serif;*/
 }
 
 .holder {
-    width: 100%;
+    width:100%;
+   
 }
 
 /*carrousel*/
@@ -58,22 +59,24 @@ font-family: 'Ubuntu', sans-serif;*/
 /*carrito*/
 
 .cart {
-    top: 0;
-    right: 0;
-    width:360px;
     min-height: 100vh;
     padding: 20px;;
-    margin-left: 60px;
+    margin-left: 5em;
     background: var(--container-color);
-    box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+    border-color: #91919198;
     transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    align-items: center;
+    justify-content: center;
+    border-style:ridge;
+    padding: auto;
+    border-end-start-radius:50px;
+    border-end-end-radius: 50px;
 }
 
 
 #cart-icon {
     position: relative;
     font-size: 1.8rem;
-    cursor: pointer;
 }
 
 #cart-icon[data-quantitiy]::after {
@@ -93,7 +96,11 @@ h3.cart-title {
     font-size: 2.0rem;
     color: rgba(255, 255, 255, 0.9);
     position: relative;
-    background-color:rgba(179, 130, 148, 0.9) ;
+    background-color:rgba(179, 130, 148, 0.9);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .total {
@@ -109,7 +116,7 @@ h3.cart-title {
 }
 
 .total-price {    
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     margin: 1rem 0 0 0.7rem;
 }
 
@@ -122,7 +129,7 @@ h3.cart-title {
     color: #000;
     font-size: 50px;
     display: flex;
-    transition: text-decoration 0.6s, color 0.6s;
+    transition: 0.6s, color 0.6s;
     position: relative;
     justify-content: center;
     font-family: 'Open Sans', sans-serif, bold;
@@ -140,7 +147,7 @@ h3.cart-title {
     bottom: -3px;
     width: 25%;
     height: 2px;
-    background-color: #6b4251;
+    background-color: rgba(179, 130, 148, 0.9);
     transition: width 0.3s;
 }
 
@@ -148,8 +155,41 @@ h3.cart-title {
     width: 100%;
 }
 
-/*botones*/
+.form-inline {
+    display: flex;
+    justify-content: space-between;
+    width: 30em;
+    height: 5em;
+    align-items: center;
+    margin-top: 10em;
+}
 
+.form-inline input {
+    border-radius: 0.5em;
+    border: none;
+    width: 15em;
+    height: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1em;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.568);
+    display: flex;
+    margin: auto;
+}
+
+.form-inline button{
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 0.5em;
+    background-color: rgba(179, 130, 148, 0.9);
+    color: rgb(255, 255, 255);
+    align-items: center;
+    display: flex;
+    margin: auto;
+}
 
 h5 {
     color: rgb(7, 7, 7);
@@ -187,6 +227,15 @@ p {
     font-size: 1.3rem;
 }
 
+.cajaItems button{
+    color: white;
+}
+
+.item button {
+    align-items: center;
+    margin-left: 7%;
+}
+
 
 /*Productos*/
 
@@ -201,7 +250,7 @@ p {
 }
 
 .cajaItems {
-    margin-top: 30px;
+    margin-top: 80px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     grid-gap: 30px;
@@ -232,10 +281,6 @@ p {
     margin-left: 10%;
 }
 
-.item button {
-    align-items: center;
-    margin-left: 7%;
-}
 
 .flex-container {
     display: flex;

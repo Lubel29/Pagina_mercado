@@ -134,24 +134,12 @@
 
     <main class="holder">
         <a href="#caja" class="nuestros-productos">Nuestros productos</a>
-        <div class="flex-container">
-            <div class="order-column">
-                <i class="fa-solid fa-arrow-up-wide-short"></i>
-                <div class="order-dropdown">
-                    <button id="btnRelevancia" class="order-button" type="button">Ordenar por relevancia</button>
-                    <div class="order-options" id="order-options">
-                        <button class="order-option selected" data-sort="relevancia">Relevancia</button>
-                        <button class="order-option" data-sort="ventas">Ventas</button>
-                        <button class="order-option" data-sort="reciente">Más reciente</button>
-                        <button class="order-option" data-sort="precio-alto">Precios más alto</button>
-                        <button class="order-option" data-sort="precio-bajo">Precios más bajo</button>
-                        <button class="order-option" data-sort="nombre-creciente">Nombre, creciente</button>
-                        <button class="order-option" data-sort="nombre-decreciente">Nombre, decreciente</button>
-                    </div>
-                </div>
-            </div>
+        <div class="form-inline my-2 my-lg-0 float-light bg-light">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Producto" aria-label="Producto">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
         </div>
-        <hr>
         <section id="caja" class="caja">
             <div class="cajaItems">
                 <div class="item" data-id=" 1">
@@ -160,7 +148,7 @@
                     <span class="precio">$1800</span>
                     <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
                 </div>
-                <div class="item" data-id =" 2">
+                <div class="item" data-id=" 2">
                     <span class="nombre" data-nombre='Manzana' data precio="1500">Manzana x kg</span>
                     <img src="img/pr1.png" alt="" class="img-item">
                     <span class="precio">$1500</span>
@@ -214,8 +202,9 @@
                 <button type="button" class="btn-buy"> Pagar </button>
                 <button type="button" class="btn-descuento"> Codigo de descuento </button>
             </div>
-
         </section>
+
+
 
         <section id="servicios" class="servicios">
             <div class="izquierda">
