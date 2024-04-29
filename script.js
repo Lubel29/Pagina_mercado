@@ -1,19 +1,19 @@
 /*bienvenida*/
-let bienvenida = prompt("Hola, bienvenido a MarketPrime. ¿Cual es tu nombre?");
-alert(`Hola ${bienvenida}, bienvenido a MarketPrime. Espero disfrutes de nuestros precios bajos`);
+// let bienvenida = prompt("Hola, bienvenido a MarketPrime. ¿Cual es tu nombre?");
+// alert(`Hola ${bienvenida}, bienvenido a MarketPrime. Espero disfrutes de nuestros precios bajos`);
 
-/*Prompt deseas comprar*/
-let seleccion = prompt("¿Deseas comprar?");
+// /*Prompt deseas comprar*/
+// let seleccion = prompt("¿Deseas comprar?");
 
-while (seleccion != "si" && seleccion != "no") {
-    alert("Por favor, ingresa 'si' o 'no' en minusculas");
-    seleccion = prompt("¿Deseas comprar?");
-}
-if (seleccion == "si") {
-    alert("Genial! al generar el codigo de descuento, tenés un 10% de descuento en tu compra");
-} else if (seleccion == "no") {
-    alert(`Te invito a navegar por nuestra pagina, ${bienvenida}, para comprar seleccionar un producto del carrito.`);
-};
+// while (seleccion != "si" && seleccion != "no") {
+//     alert("Por favor, ingresa 'si' o 'no' en minusculas");
+//     seleccion = prompt("¿Deseas comprar?");
+// }
+// if (seleccion == "si") {
+//     alert("Genial! al generar el codigo de descuento, tenés un 10% de descuento en tu compra");
+// } else if (seleccion == "no") {
+//     alert(`Te invito a navegar por nuestra pagina, ${bienvenida}, para comprar seleccionar un producto del carrito.`);
+// };
 
 /*---------------------------------------*/
 
@@ -47,23 +47,59 @@ for (let i = 0; i < productos.length; i++) {
 
 
 
+/*Funcion generar codigo Descuento*/
+
+function generarCodigoDescuento() {
+    return Math.floor(Math.random() * 10000);
+}
+
+let porcentajeDescuento = 10;
+let codigoDescuento = generarCodigoDescuento();
+
+console.log("Porcentaje de descuento:", porcentajeDescuento + "%");
+console.log("Código de descuento generado:", codigoDescuento);
+
+
+
+
+
+
 /*Funcion Calcular total de productos seleccionados*/
 
 let productoSeleccionado = [productos[1], productos[3], productos[5]];
 let totalCarrito = calcularTotalCarrito(productoSeleccionado);
+console.log("Total sin descuento:", totalCarrito);
 
-function calcularTotalCarrito(productoSeleccionado) {
+function calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoDescuentoIngresado) {
     let total = 0;
     for (let producto of productoSeleccionado) {
         total += producto.precio;
     }
-    return total;
+
+    if (parseInt(codigoDescuentoIngresado) === codigoDescuento) {
+        let descuento = total * (porcentajeDescuento / 100);
+        let totalConDescuento = total - descuento;
+        return totalConDescuento;
+    } else {
+        return total;
+    }
+}
+
+let codigoDescuentoIngresado = prompt("Ingresa el Código de descuento");
+
+if (!isNaN(parseInt(codigoDescuentoIngresado))) {
+    let totalCarritoConDescuento = calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoDescuentoIngresado);
+    console.log(`El total de tu carrito con descuento es: $${totalCarritoConDescuento}`);
+} else {
+    console.log("Por favor, ingresa un código de descuento válido.");
 };
 
-console.log(`El total de tu carrito es: $${totalCarrito}`);
+
 
 
 /*---------------------------------------*/
+
+
 
 
 
@@ -96,11 +132,11 @@ console.log(`Cantidad de productos actualmente: ${productos.length}`);
 function buscarProductoPorNombre(nombre) {
     let productoEncontrado = productos.find(producto => producto.nombre === nombre);
     if (!productoEncontrado) {
-      console.log("Producto inexistente");
+        console.log("Producto inexistente");
     } else {
-      console.log("Producto encontrado:", productoEncontrado);
+        console.log("Producto encontrado:", productoEncontrado);
     }
-  }
+}
 
 buscarProductoPorNombre("Manzana x kg");
 
@@ -116,26 +152,6 @@ console.log("Productos sin stock:", productosSinStock);
 
 /*Me devolverá TRUE el que el stock sea 0*/
 
-
-
-
-
-/*---------------------------------------*/
-
-
-
-/*Funcion Descuento*/
-
-let porcentajeDescuento = 0.10 * 100;
-let codigoDescuento = generarCodigoDescuento();
-
-function generarCodigoDescuento() {
-    let codigo = Math.floor(Math.random() * 10000);
-    return codigo;
-};
-
-console.log("Porcentaje de descuento:", porcentajeDescuento + "%");
-console.log("Código de descuento generado: MARKET", codigoDescuento);
 
 
 
