@@ -58,38 +58,6 @@ font-family: 'Ubuntu', sans-serif;*/
 
 /*carrito*/
 
-.cart {
-    min-height: 100vh;
-    padding: 20px;;
-    margin-left: 5em;
-    background: var(--container-color);
-    border-color: #91919198;
-    transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-    align-items: center;
-    justify-content: center;
-    border-style:ridge;
-    padding: auto;
-    border-end-start-radius:50px;
-    border-end-end-radius: 50px;
-}
-
-
-#cart-icon {
-    position: relative;
-    font-size: 1.8rem;
-}
-
-#cart-icon[data-quantitiy]::after {
-    contain: '';
-}
-
-#cart-icon[data-quantitiy]::after {
-    contain: '';
-    right: -12px;
-    width: 20px;
-    height: 20px;
-    background: var(--text-color);
-}
 
 h3.cart-title {
     text-align: center;
@@ -118,6 +86,15 @@ h3.cart-title {
 .total-price {    
     font-size: 1.0rem;
     margin: 1rem 0 0 0.7rem;
+}
+
+.bi-trash{
+    color: rgba(0, 0, 0, 0.9);
+    width: 2.8rem;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 
@@ -234,6 +211,17 @@ p {
 .item button {
     align-items: center;
     margin-left: 7%;
+}
+
+#boton-remove{
+    color: white;
+    border-style: dashed;
+    align-items: center;
+    margin-left: 7%;
+    border-radius: 10%;
+    border-width: 3px;
+    font-size: 1.0rem;
+    display: flex;
 }
 
 
@@ -394,6 +382,12 @@ p {
     margin-bottom: 1px;
 }
 
+.producto-en-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
 
 
 /*servicios*/

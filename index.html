@@ -142,66 +142,144 @@
         </div>
         <section id="caja" class="caja">
             <div class="cajaItems">
-                <div class="item" data-id=" 1">
-                    <span class="nombre" data-nombre='Pan de salvado' data precio="1800"> Pan de salvado</span>
+                <div class="item" id="1">
+                    <span class="nombre"> Pan de salvado</span>
                     <img src="img/pandesalvado.jpg" alt="" class="img-item">
-                    <span class="precio">$1800</span>
-                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                    <span class="precio">$1000</span>
+                    <button class="btn btn-primary" data-id="1"> + Agregar al carrito</button>
+                    <label for="cantidad">Cantidad:</label>
+                    <select class="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
                 </div>
-                <div class="item" data-id=" 2">
-                    <span class="nombre" data-nombre='Manzana' data precio="1500">Manzana x kg</span>
+
+                <div class="item" id="2">
+                    <span class="nombre">Manzana</span>
                     <img src="img/pr1.png" alt="" class="img-item">
-                    <span class="precio">$1500</span>
-                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
-                </div>
-                <div class="item" data-id=" 3">
-                    <span class="nombre" data-nombre='Naranja' data precio="1800"> Naranja x kg</span>
-                    <img src="img/pr2.png" alt="" class="img-item">
-                    <span class="precio">$1800</span>
-                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
-                </div>
-                <div class="item" data-id=" 4">
-                    <span class="nombre" data-nombre='Arandanos' data precio="2000"> Arandanos x gr</span>
-                    <img src="img/pr3.png" alt="" class="img-item">
-                    <span class="precio">$2000</span>
-                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
-                </div>
-                <div class="item" data-id=" 5">
-                    <span class="nombre" data-nombre='Jugo de frutas' data precio="2500"> Jugo de frutas</span>
-                    <img src="img/f2.png" alt="" class="img-item">
-                    <span class="precio">$2500</span>
-                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
-                </div>
-                <div class="item" data-id=" 6">
-                    <span class="nombre" data-nombre='Granola' data precio="2800"> Granola </span>
-                    <img src="img/f4.png" alt="" class="img-item">
-                    <span class="precio">$2800</span>
-                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
-                </div>
-                <div class="item" data-id=" 7">
-                    <span class="nombre" data-nombre='Banana' data precio="1600"> Banana x kg </span>
-                    <img src="img/pr6.png" alt="" class="img-item">
                     <span class="precio">$1600</span>
-                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                    <button class="btn btn-primary" data-id="2"> + Agregar al carrito</button>
+                    <label for="cantidad">Cantidad:</label>
+                    <select class="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
                 </div>
-                <div class="item" data-id="8">
-                    <span class="nombre" data-nombre='Frutilla' data precio="$1800"> Frutilla x kg </span>
+                <div class="item" id="3">
+                    <span class="nombre"> Naranja</span>
+                    <img src="img/pr2.png" alt="" class="img-item">
+                    <span class="precio">$1500</span>
+                    <button class="btn btn-primary" data-id="3"> + Agregar al carrito</button>
+                    <label for="cantidad">Cantidad:</label>
+                    <select class="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="item" id="4">
+                    <span class="nombre"> Arandanos</span>
+                    <img src="img/pr3.png" alt="" class="img-item">
+                    <span class="precio">>$2500</span>
+                    <button class="btn btn-primary" data-id="4"> + Agregar al carrito</button>
+                    <label for="cantidad">Cantidad:</label>
+                    <select class="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="item" id="5">
+                    <span class="nombre"> Jugo de frutas</span>
+                    <img src="img/f2.png" alt="" class="img-item">
+                    <span class="precio">$1200</span>
+                    <button class="btn btn-primary" data-id="5"> + Agregar al carrito</button>
+                    <label for="cantidad">Cantidad:</label>
+                    <select class="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="item" id="6">
+                    <span class="nombre"> Granola </span>
+                    <img src="img/f4.png" alt="" class="img-item">
+                    <span class="precio">$2000</span>
+                    <button class="btn btn-primary" data-id="6"> + Agregar al carrito</button>
+                    <label for="cantidad">Cantidad:</label>
+                    <select class="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="item" id="7">
+                    <span class="nombre"> Banana</span>
+                    <img src="img/pr6.png" alt="" class="img-item">
+                    <span class="precio">$1500</span>
+                    <button class="btn btn-primary" data-id="7"> + Agregar al carrito</button>
+                    <label for="cantidad">Cantidad:</label>
+                    <select class="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="item" id="8">
+                    <span class="nombre"> Frutilla</span>
                     <img src="img/pr5.png" alt="" class="img-item">
-                    <span class="precio">$2600</span>
-                    <button type="button" class="btn btn-outline-danger">Agregar al carrito</button>
+                    <span class="precio">$1800</span>
+                    <button class="btn btn-primary" data-id="8"> + Agregar al carrito</button>
+                    <label for="cantidad">Cantidad:</label>
+                    <select class="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
                 </div>
             </div>
 
-            <div class="cart">
-                <i class="fa-solid fa-cart-shopping" id="cart-icon" data-quantitiy="0"></i>
-                <h3 class="cart-title"> Carrito </h3>
-                <div class="total">
-                    <div class="total-title">Total</div>
-                    <div class="total-price"> $0 </div>
+            <aside class="col-sm-4">
+                <h2>Carrito</h2>
+                <ul id="productos-en-carrito" class="list-group">
+
+                </ul>
+                <hr>
+                <div id="precio-total">
+                    <p class="text-center">Total:</p>
                 </div>
-                <button type="button" class="btn-buy"> Pagar </button>
-                <button type="button" class="btn-descuento"> Codigo de descuento </button>
-            </div>
+
+                <div>
+                    <button class="btn-buy">Comprar</button>
+                </div>
+            </aside>
+
         </section>
 
 

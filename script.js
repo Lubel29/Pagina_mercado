@@ -1,50 +1,103 @@
 /*bienvenida*/
-let bienvenida = prompt("Hola, bienvenido a MarketPrime. ¿Cual es tu nombre?");
-alert(`Hola ${bienvenida}, bienvenido a MarketPrime. Espero disfrutes de nuestros precios bajos`);
+// let bienvenida = prompt("Hola, bienvenido a MarketPrime. ¿Cual es tu nombre?");
+// alert(`Hola ${bienvenida}, bienvenido a MarketPrime. Espero disfrutes de nuestros precios bajos`);
 
-/*Prompt deseas comprar*/
-let seleccion = prompt("¿Deseas comprar?");
+// /*Prompt deseas comprar*/
+// let seleccion = prompt("¿Deseas comprar?");
 
-while (seleccion != "si" && seleccion != "no") {
-    alert("Por favor, ingresa 'si' o 'no' en minusculas");
-    seleccion = prompt("¿Deseas comprar?");
-}
-if (seleccion == "si") {
-    alert("Genial! al generar el codigo de descuento, tenés un 10% de descuento en tu compra");
-} else if (seleccion == "no") {
-    alert(`Te invito a navegar por nuestra pagina, ${bienvenida}, para comprar seleccionar un producto del carrito.`);
-};
+// while (seleccion != "si" && seleccion != "no") {
+//     alert("Por favor, ingresa 'si' o 'no' en minusculas");
+//     seleccion = prompt("¿Deseas comprar?");
+// }
+// if (seleccion == "si") {
+//     alert("Genial! al generar el codigo de descuento, tenés un 10% de descuento en tu compra");
+// } else if (seleccion == "no") {
+//     alert(`Te invito a navegar por nuestra pagina, ${bienvenida}, para comprar seleccionar un producto del carrito.`);
+// };
 
 /*---------------------------------------*/
-
-
-
 
 
 /*Productos*/
 let productos = [
     { nombre: "Pan de salvado", precio: 1800, stock: 50 },
-    { nombre: "Manzana x kg", precio: 1500, stock: 80 },
-    { nombre: "Naranja x kg", precio: 1800, stock: 100 },
-    { nombre: "Arandanos x gr", precio: 2000, stock: 8 },
-    { nombre: "jugo de frutas", precio: 2500, stock: 25 },
-    { nombre: "Granola x kg", precio: 2800, stock: 0 },
-    { nombre: "banana x kg", precio: 1600, stock: 50 },
-    { nombre: "Frutilla x kg", precio: 2600, stock: 70 },
+    { nombre: "Manzana", precio: 1500, stock: 80 },
+    { nombre: "Naranja", precio: 1800, stock: 100 },
+    { nombre: "Arandanos", precio: 2000, stock: 8 },
+    { nombre: "Jugo de frutas", precio: 2500, stock: 25 },
+    { nombre: "Granola", precio: 2800, stock: 0 },
+    { nombre: "Banana", precio: 1600, stock: 50 },
+    { nombre: "Frutilla", precio: 2600, stock: 70 },
 ];
 
 
+/*Funcion carrito*/
+
+document.addEventListener('DOMContentLoaded', function () {
+    const botonesAgregar = document.querySelectorAll('.btn-primary');
+    const carrito = document.getElementById('productos-en-carrito');
+    const totalCarritoElement = document.getElementById('precio-total');
+    let totalCarrito = 0;
+
+    function agregarAlCarrito(nombre, precio, cantidad) {
+        const nuevoItem = document.createElement('li');
+        nuevoItem.classList.add('list-group-item');
+        nuevoItem.innerHTML = `
+            <p>${nombre}</p>
+            <span>Cantidad: ${cantidad}</span>
+            <span>Precio por unidad / por kg: $${precio.toFixed(2)}</span>
+            <i class="bi bi-trash"></i>`
+            ;
+        carrito.appendChild(nuevoItem);
+
+        totalCarrito += precio * cantidad;
+        totalCarritoElement.textContent = `Total : $${totalCarrito.toFixed(2)}`;
+
+        // Event listener para el ícono de la papelera (trash)
+        nuevoItem.querySelector('.bi-trash').addEventListener('click', function () {
+            totalCarrito -= precio * cantidad;
+            totalCarritoElement.textContent = `$${totalCarrito.toFixed(2)}`;
+            nuevoItem.remove();
+        });
+    };
+
+    // Event listener agregar productos al carrito
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener('click', function () {
+            const item = boton.closest('.item');
+            const nombre = item.querySelector('.nombre').textContent;
+            const precio = parseFloat(item.querySelector('.precio').textContent.slice(1));
+            const cantidad = parseInt(item.querySelector('.cantidad').value);
+            agregarAlCarrito(nombre, precio, cantidad);
+        });
+    });
+
+});
+
+
+
+
+
+
+
 /*---------------------------------------*/
 
-/*Recorrido del carrito de compras*/
 
-for (let i = 0; i < productos.length; i++) {
-    console.log(productos[i]);
-}
+
+
+
+// Event listener para el botón "Pagar"
+document.querySelectorAll(".btn-buy").forEach((boton) => {
+    boton.addEventListener("click", () => {
+        alert("Tu pedido ha sido procesado con éxito.");
+        console.log("se hizo click en pagar");
+        actualizarPrecioTotal();
+    });
+});
 
 
 /*---------------------------------------*/
-
 
 
 /*Funcion generar codigo Descuento*/
@@ -66,33 +119,33 @@ console.log("Código de descuento generado:", codigoDescuento);
 
 /*Funcion Calcular total de productos seleccionados*/
 
-let productoSeleccionado = [productos[1], productos[3], productos[5]];
-let totalCarrito = calcularTotalCarrito(productoSeleccionado);
-console.log("Total sin descuento:", totalCarrito);
+// let productoSeleccionado = [productos[1], productos[3], productos[5]];
+// let totalCarrito = calcularTotalCarrito(productoSeleccionado);
+// console.log("Total sin descuento:", totalCarrito);
 
-function calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoDescuentoIngresado) {
-    let total = 0;
-    for (let producto of productoSeleccionado) {
-        total += producto.precio;
-    }
+// function calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoDescuentoIngresado) {
+//     let total = 0;
+//     for (let producto of productoSeleccionado) {
+//         total += producto.precio;
+//     }
 
-    if (parseInt(codigoDescuentoIngresado) === codigoDescuento) {
-        let descuento = total * (porcentajeDescuento / 100);
-        let totalConDescuento = total - descuento;
-        return totalConDescuento;
-    } else {
-        return total;
-    }
-}
+//     if (parseInt(codigoDescuentoIngresado) === codigoDescuento) {
+//         let descuento = total * (porcentajeDescuento / 100);
+//         let totalConDescuento = total - descuento;
+//         return totalConDescuento;
+//     } else {
+//         return total;
+//     }
+// }
 
-let codigoDescuentoIngresado = prompt("Ingresa el Código de descuento");
+// let codigoDescuentoIngresado = prompt("Ingresa el Código de descuento");
 
-if ((parseInt(codigoDescuentoIngresado))) {
-    let totalCarritoConDescuento = calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoDescuentoIngresado);
-    console.log(`El total de tu carrito con descuento es: $${totalCarritoConDescuento}`);
-} else {
-    console.log("Por favor, ingresa un código de descuento válido.");
-};
+// if ((parseInt(codigoDescuentoIngresado))) {
+//     let totalCarritoConDescuento = calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoDescuentoIngresado);
+//     console.log(`El total de tu carrito con descuento es: $${totalCarritoConDescuento}`);
+// } else {
+//     console.log("Por favor, ingresa un código de descuento válido.");
+// };
 
 
 
