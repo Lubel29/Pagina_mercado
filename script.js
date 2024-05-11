@@ -53,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
         totalCarrito += precio * cantidad;
         totalCarritoElement.textContent = `Total : $${totalCarrito.toFixed(2)}`;
 
+        //
+
         // Event listener para el ícono de la papelera (trash)
         nuevoItem.querySelector('.bi-trash').addEventListener('click', function () {
             totalCarrito -= precio * cantidad;
@@ -73,28 +75,57 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-});
-
-
-
-
-
-
-
-/*---------------------------------------*/
-
-
-
-
-
-// Event listener para el botón "Pagar"
-document.querySelectorAll(".btn-buy").forEach((boton) => {
-    boton.addEventListener("click", () => {
-        alert("Tu pedido ha sido procesado con éxito.");
-        console.log("se hizo click en pagar");
-        actualizarPrecioTotal();
+    // Event listener para el botón "Pagar"
+    document.querySelectorAll(".css-button-gradient").forEach((boton) => {
+        boton.addEventListener("click", () => {
+            alert("Tu pedido ha sido procesado con éxito.");
+            console.log("se hizo click en pagar");
+        });
     });
+
+    //refrescar el carrito al hacer click en comprar
+    document.querySelector(".css-button-gradient").addEventListener("click", () => {
+        location.reload();
+    });
+
 });
+
+
+//Buscador de productos-Resaltar
+
+document.addEventListener('DOMContentLoaded', function () {
+    const formularioBusqueda = document.querySelector('.form-inline');
+    const campoBusqueda = formularioBusqueda.querySelector('.form-control');
+    const productos = document.querySelectorAll('.item');
+
+  
+    function buscarProducto(event) {
+        event.preventDefault(); 
+
+        const terminoBusqueda = campoBusqueda.value.toLowerCase();
+
+       
+        productos.forEach(producto => {
+            const nombreProducto = producto.querySelector('.nombre').textContent.toLowerCase();
+            
+            
+            if (nombreProducto.includes(terminoBusqueda)) {
+                producto.classList.add('resaltado');
+            } else {
+                producto.classList.remove('resaltado');
+            }
+        });
+    }
+
+    formularioBusqueda.addEventListener('submit', buscarProducto);
+});
+
+
+
+
+
+
+
 
 
 /*---------------------------------------*/
@@ -116,85 +147,9 @@ console.log("Código de descuento generado:", codigoDescuento);
 
 
 
-
-/*Funcion Calcular total de productos seleccionados*/
-
-// let productoSeleccionado = [productos[1], productos[3], productos[5]];
-// let totalCarrito = calcularTotalCarrito(productoSeleccionado);
-// console.log("Total sin descuento:", totalCarrito);
-
-// function calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoDescuentoIngresado) {
-//     let total = 0;
-//     for (let producto of productoSeleccionado) {
-//         total += producto.precio;
-//     }
-
-//     if (parseInt(codigoDescuentoIngresado) === codigoDescuento) {
-//         let descuento = total * (porcentajeDescuento / 100);
-//         let totalConDescuento = total - descuento;
-//         return totalConDescuento;
-//     } else {
-//         return total;
-//     }
-// }
-
-// let codigoDescuentoIngresado = prompt("Ingresa el Código de descuento");
-
-// if ((parseInt(codigoDescuentoIngresado))) {
-//     let totalCarritoConDescuento = calcularTotalCarrito(productoSeleccionado, porcentajeDescuento, codigoDescuentoIngresado);
-//     console.log(`El total de tu carrito con descuento es: $${totalCarritoConDescuento}`);
-// } else {
-//     console.log("Por favor, ingresa un código de descuento válido.");
-// };
-
-
-
-
 /*---------------------------------------*/
 
 
-
-
-
-/*Agregar productos nuevos a la lista de productos en venta */
-
-function AgregarNuevoProducto(producto) {
-    productos.push(producto);
-    console.log(`${producto.nombre} ha sido agregado`)
-}
-
-let productos_nuevo = [
-    { nombre: 'Leche', precio: 2100, stock: 150 },
-    { nombre: 'Arroz', precio: 1800, stock: 120 },
-    { nombre: 'Huevos', precio: 1800, stock: 100 },
-];
-
-productos_nuevo.forEach(producto => AgregarNuevoProducto(producto));
-
-console.log(`Cantidad de productos actualmente: ${productos.length}`);
-
-
-
-
-/*---------------------------------------*/
-
-
-
-
-/*Boton busqueda de producto*/
-function buscarProductoPorNombre(nombre) {
-    let productoEncontrado = productos.find(producto => producto.nombre === nombre);
-    if (!productoEncontrado) {
-        console.log("Producto inexistente");
-    } else {
-        console.log("Producto encontrado:", productoEncontrado);
-    }
-}
-
-buscarProductoPorNombre("Manzana x kg");
-
-
-/*---------------------------------------*/
 
 
 
@@ -232,6 +187,9 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Enviando datos al servidor:", nombre, email, telefono, mensaje);
 
         document.getElementById('respuesta-envio').innerHTML = "<strong>Gracias por contactarnos, " + nombre + "!</strong><br>Hemos recibido tu mensaje";
+
+        // Resetear el formulario
+        form.reset();
 
     });
 });

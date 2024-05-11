@@ -14,8 +14,8 @@ font-family: 'Ubuntu', sans-serif;*/
 }
 
 .holder {
-    width:100%;
-   
+    width: 100%;
+
 }
 
 /*carrousel*/
@@ -59,36 +59,22 @@ font-family: 'Ubuntu', sans-serif;*/
 /*carrito*/
 
 
-h3.cart-title {
+.col-sm-4 h2 {
     text-align: center;
     font-size: 2.0rem;
     color: rgba(255, 255, 255, 0.9);
     position: relative;
-    background-color:rgba(179, 130, 148, 0.9);
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
 }
 
-.total {
-    display: flex;
-    justify-content:flex-start;
-    margin-top: 1.5rem;
-}
 
-.total-title {
+.precio-total {
     font-size: 1.2rem;
     font-weight: 100;
     margin-top: 1rem;
 }
 
-.total-price {    
-    font-size: 1.0rem;
-    margin: 1rem 0 0 0.7rem;
-}
 
-.bi-trash{
+.bi-trash {
     color: rgba(0, 0, 0, 0.9);
     width: 2.8rem;
     text-align: center;
@@ -99,6 +85,59 @@ h3.cart-title {
 
 
 /*botones*/
+
+.cta {
+    display: flex;
+    position: relative;
+    padding: 19px 22px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  .cta:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 28px;
+    background: rgba(255, 171, 157, 0.5);
+    width: 56px;
+    height: 56px;
+    transition: all 0.3s ease;
+  }
+  .cta span {
+    position: relative;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .cta svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #111;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+  }
+  .cta:hover:before {
+    width: 100%;
+    background: #ffab9d;
+  }
+  .cta:hover svg {
+    transform: translateX(0);
+  }
+  .cta:active {
+    transform: scale(0.96);
+  }
+
 
 
 .nuestros-productos {
@@ -111,11 +150,14 @@ h3.cart-title {
     justify-content: center;
     font-family: 'Open Sans', sans-serif, bold;
     padding-top: 2rem;
+    cursor: none;
 }
 
 .nuestros-productos:hover {
     text-decoration: none;
     color: #6b4251;
+    transition: 0.6s, color 0.6s;
+    
 }
 
 .nuestros-productos::after {
@@ -134,11 +176,13 @@ h3.cart-title {
 
 .form-inline {
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-between;
     width: 30em;
     height: 5em;
+    margin-top: 5em;
+    margin-bottom: 2em;
     align-items: center;
-    margin-top: 10em;
 }
 
 .form-inline input {
@@ -150,12 +194,12 @@ h3.cart-title {
     padding-right: 1em;
     font-size: 1em;
     outline: none;
-    background-color: rgba(255, 255, 255, 0.568);
+    background-color: rgba(255, 255, 255, 0.829);
     display: flex;
     margin: auto;
 }
 
-.form-inline button{
+.form-inline button {
     padding-left: 2em;
     padding-right: 2em;
     padding-top: 0.5em;
@@ -190,21 +234,7 @@ p {
 }
 
 
-.btn-descuento {
-    background-color: rgba(179, 130, 148, 0.9);
-    color: white;
-    border-style: dashed;
-}
-
-.btn-descuento,
-.btn-buy {
-    margin-top: 30%;
-    border-radius: 10%;
-    border-width: 3px;
-    font-size: 1.3rem;
-}
-
-.cajaItems button{
+.cajaItems button {
     color: white;
 }
 
@@ -213,15 +243,29 @@ p {
     margin-left: 7%;
 }
 
-#boton-remove{
-    color: white;
-    border-style: dashed;
-    align-items: center;
-    margin-left: 7%;
-    border-radius: 10%;
-    border-width: 3px;
-    font-size: 1.0rem;
-    display: flex;
+.css-button-gradient {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    margin-left: 35%;
+    background-size: 120% auto;
+    background-image: linear-gradient(315deg, rgba(92, 109, 206, 0.9) 0%, #c587c7 75%);
+}
+
+.css-button-gradient--1:hover {
+    background-position: right center;
+}
+
+.css-button-gradient--1:active {
+    top: 2px;
 }
 
 
@@ -264,7 +308,7 @@ p {
 
 .item span {
     font-style: italic;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     margin-left: 10%;
 }
@@ -382,12 +426,18 @@ p {
     margin-bottom: 1px;
 }
 
-.producto-en-carrito {
-    display: flex;
-    justify-content: space-between;
+.item label {
+    color: var(--blanco);
     align-items: center;
+    justify-content: center;
     padding: 10px;
 }
+
+
+.resaltado {
+    background-color: yellow;
+}
+
 
 
 /*servicios*/

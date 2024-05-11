@@ -134,19 +134,20 @@
 
     <main class="holder">
         <a href="#caja" class="nuestros-productos">Nuestros productos</a>
-        <div class="form-inline my-2 my-lg-0 float-light bg-light">
+        <div class="form-inline">
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Producto" aria-label="Producto">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
         </div>
+
+
         <section id="caja" class="caja">
             <div class="cajaItems">
                 <div class="item" id="1">
                     <span class="nombre"> Pan de salvado</span>
                     <img src="img/pandesalvado.jpg" alt="" class="img-item">
                     <span class="precio">$1000</span>
-                    <button class="btn btn-primary" data-id="1"> + Agregar al carrito</button>
                     <label for="cantidad">Cantidad:</label>
                     <select class="cantidad">
                         <option value="1">1</option>
@@ -156,13 +157,13 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    <button class="btn btn-primary" data-id="1"> + Agregar al carrito</button>
                 </div>
 
                 <div class="item" id="2">
                     <span class="nombre">Manzana</span>
                     <img src="img/pr1.png" alt="" class="img-item">
                     <span class="precio">$1600</span>
-                    <button class="btn btn-primary" data-id="2"> + Agregar al carrito</button>
                     <label for="cantidad">Cantidad:</label>
                     <select class="cantidad">
                         <option value="1">1</option>
@@ -172,12 +173,12 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    <button class="btn btn-primary" data-id="2"> + Agregar al carrito</button>
                 </div>
                 <div class="item" id="3">
                     <span class="nombre"> Naranja</span>
                     <img src="img/pr2.png" alt="" class="img-item">
                     <span class="precio">$1500</span>
-                    <button class="btn btn-primary" data-id="3"> + Agregar al carrito</button>
                     <label for="cantidad">Cantidad:</label>
                     <select class="cantidad">
                         <option value="1">1</option>
@@ -187,12 +188,12 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    <button class="btn btn-primary" data-id="3"> + Agregar al carrito</button>
                 </div>
                 <div class="item" id="4">
                     <span class="nombre"> Arandanos</span>
                     <img src="img/pr3.png" alt="" class="img-item">
-                    <span class="precio">>$2500</span>
-                    <button class="btn btn-primary" data-id="4"> + Agregar al carrito</button>
+                    <span class="precio">$2500</span>
                     <label for="cantidad">Cantidad:</label>
                     <select class="cantidad">
                         <option value="1">1</option>
@@ -202,12 +203,13 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    <button class="btn btn-primary" data-id="4"> + Agregar al carrito</button>
+
                 </div>
                 <div class="item" id="5">
                     <span class="nombre"> Jugo de frutas</span>
                     <img src="img/f2.png" alt="" class="img-item">
                     <span class="precio">$1200</span>
-                    <button class="btn btn-primary" data-id="5"> + Agregar al carrito</button>
                     <label for="cantidad">Cantidad:</label>
                     <select class="cantidad">
                         <option value="1">1</option>
@@ -217,12 +219,13 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    <button class="btn btn-primary" data-id="5"> + Agregar al carrito</button>
+
                 </div>
                 <div class="item" id="6">
                     <span class="nombre"> Granola </span>
                     <img src="img/f4.png" alt="" class="img-item">
                     <span class="precio">$2000</span>
-                    <button class="btn btn-primary" data-id="6"> + Agregar al carrito</button>
                     <label for="cantidad">Cantidad:</label>
                     <select class="cantidad">
                         <option value="1">1</option>
@@ -232,12 +235,13 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    <button class="btn btn-primary" data-id="6"> + Agregar al carrito</button>
+
                 </div>
                 <div class="item" id="7">
                     <span class="nombre"> Banana</span>
                     <img src="img/pr6.png" alt="" class="img-item">
                     <span class="precio">$1500</span>
-                    <button class="btn btn-primary" data-id="7"> + Agregar al carrito</button>
                     <label for="cantidad">Cantidad:</label>
                     <select class="cantidad">
                         <option value="1">1</option>
@@ -247,12 +251,13 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    <button class="btn btn-primary" data-id="7"> + Agregar al carrito</button>
+
                 </div>
                 <div class="item" id="8">
                     <span class="nombre"> Frutilla</span>
                     <img src="img/pr5.png" alt="" class="img-item">
                     <span class="precio">$1800</span>
-                    <button class="btn btn-primary" data-id="8"> + Agregar al carrito</button>
                     <label for="cantidad">Cantidad:</label>
                     <select class="cantidad">
                         <option value="1">1</option>
@@ -262,7 +267,19 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    <button class="btn btn-primary" data-id="8"> + Agregar al carrito</button>
+
                 </div>
+            </div>
+
+            <div>
+                <a href="#" class="cta">
+                    <span>Codigo de descuento</span>
+                    <svg width="13px" height="10px" viewBox="0 0 13 10">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </a>
             </div>
 
             <aside class="col-sm-4">
@@ -272,11 +289,11 @@
                 </ul>
                 <hr>
                 <div id="precio-total">
-                    <p class="text-center">Total:</p>
+                    <p class="text-center"></p>
                 </div>
 
                 <div>
-                    <button class="btn-buy">Comprar</button>
+                    <button class="css-button-gradient">Comprar</button>
                 </div>
             </aside>
 
