@@ -1,19 +1,40 @@
-/*bienvenida*/
-// let bienvenida = prompt("Hola, bienvenido a MarketPrime. ¿Cual es tu nombre?");
-// alert(`Hola ${bienvenida}, bienvenido a MarketPrime. Espero disfrutes de nuestros precios bajos`);
+/*---------------------------------------*/
 
-// /*Prompt deseas comprar*/
-// let seleccion = prompt("¿Deseas comprar?");
+//Bienvenida 
 
-// while (seleccion != "si" && seleccion != "no") {
-//     alert("Por favor, ingresa 'si' o 'no' en minusculas");
-//     seleccion = prompt("¿Deseas comprar?");
-// }
-// if (seleccion == "si") {
-//     alert("Genial! al generar el codigo de descuento, tenés un 10% de descuento en tu compra");
-// } else if (seleccion == "no") {
-//     alert(`Te invito a navegar por nuestra pagina, ${bienvenida}, para comprar seleccionar un producto del carrito.`);
-// };
+document.addEventListener('DOMContentLoaded', () => {
+    Swal.fire({
+        title: 'Ingrese su nombre',
+        input: 'text',
+        customClass: {
+            validationMessage: 'my-validation-message',
+        },
+        inputValidator: (value) => {
+            if (!value) {
+                return '<i class="fa fa-info-circle"></i> Your name is required';
+            }
+        },
+        preConfirm: (value) => {
+            if (value) {
+                // Almacenar el nombre del usuario
+                localStorage.setItem('user', value);
+
+                // Mostrar cartel de bienvenida
+                Swal.fire({
+                    title: 'Bienvenido',
+                    text: `Bienvenido ${value} a MarketPrime, disfruta tu compra`,
+                    icon: 'success'
+                }).then(() => {
+                    // Actualizar el mensaje en el DOM después de mostrar el cartel
+                    const bienvenida = document.getElementById('bienvenida');
+                    bienvenida.textContent = `Bienvenid@ ${value}`;
+                });
+            }
+        }
+    });
+});
+
+
 
 /*---------------------------------------*/
 
@@ -30,6 +51,7 @@ let productos = [
     { nombre: "Frutilla", precio: 2600, stock: 70 },
 ];
 
+console.log(productos);
 
 /*Funcion carrito*/
 
@@ -51,9 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
         carrito.appendChild(nuevoItem);
 
         totalCarrito += precio * cantidad;
-        totalCarritoElement.textContent = `Total : $${totalCarrito.toFixed(2)}`;
+        totalCarritoElement.textContent = `Total : $${totalCarrito.toFixed(2)}`
 
-        //
 
         // Event listener para el ícono de la papelera (trash)
         nuevoItem.querySelector('.bi-trash').addEventListener('click', function () {
@@ -71,9 +92,23 @@ document.addEventListener('DOMContentLoaded', function () {
             const nombre = item.querySelector('.nombre').textContent;
             const precio = parseFloat(item.querySelector('.precio').textContent.slice(1));
             const cantidad = parseInt(item.querySelector('.cantidad').value);
-            agregarAlCarrito(nombre, precio, cantidad);
+
+            // Verificar stock y agregar al carrito
+            const productoSeleccionado = productos.find(producto => producto.nombre === nombre);
+            productoSeleccionado && productoSeleccionado.stock >= cantidad ? (
+                agregarAlCarrito(nombre, precio, cantidad),
+                productoSeleccionado.stock -= cantidad
+            ) : (
+                productoSeleccionado ? alert('El producto no está disponible') : alert('El producto no cuenta con stock')
+            );
+
+            //refrescar el carrito al hacer click en comprar
+            document.querySelector(".css-button-gradient").addEventListener("click", () => {
+                location.reload();
+            });
         });
     });
+
 
     // Event listener para el botón "Pagar"
     document.querySelectorAll(".css-button-gradient").forEach((boton) => {
@@ -83,12 +118,42 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    //refrescar el carrito al hacer click en comprar
-    document.querySelector(".css-button-gradient").addEventListener("click", () => {
-        location.reload();
-    });
+    // Event listener para el botón de descuento
+    let descuentoAplicado = false;
+    const aplicarDescuentoButton = document.getElementById("aplicarDescuentoButton");
+    const codigoDescuentoInput = document.getElementById("code");
+    // Agrega un event listener para el evento de clic en el botón
+    aplicarDescuentoButton.addEventListener("click", () => {
+        // Obtén el valor del campo de entrada del código de descuento
+        const codigoDescuento = codigoDescuentoInput.value.trim();
 
+        // Verifica si el descuento ya ha sido aplicado
+        if (descuentoAplicado) {
+            alert("El código de descuento ya ha sido aplicado.");
+        } else {
+            // Verifica si el código de descuento ingresado es válido
+            if (codigoDescuento === "MARKET10") {
+                // Calcula el descuento del 10% y actualiza el total del carrito
+                totalCarrito -= totalCarrito * 0.1;
+
+                // Actualiza el elemento que muestra el total del carrito
+                totalCarritoElement.textContent = totalCarrito.toFixed(2);
+
+                // Marca que el descuento ha sido aplicado
+                descuentoAplicado = true;
+
+                // Muestra un mensaje de éxito
+                alert("Descuento aplicado con éxito.");
+            } else {
+                // Muestra un mensaje si el código de descuento ingresado no es válido
+                alert("El código de descuento ingresado no es válido.");
+            }
+        }
+    });
 });
+
+
+
 
 
 //Buscador de productos-Resaltar
@@ -97,76 +162,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const formularioBusqueda = document.querySelector('.form-inline');
     const campoBusqueda = formularioBusqueda.querySelector('.form-control');
     const productos = document.querySelectorAll('.item');
-
-  
     function buscarProducto(event) {
-        event.preventDefault(); 
+        event.preventDefault();
 
         const terminoBusqueda = campoBusqueda.value.toLowerCase();
 
-       
         productos.forEach(producto => {
             const nombreProducto = producto.querySelector('.nombre').textContent.toLowerCase();
-            
-            
-            if (nombreProducto.includes(terminoBusqueda)) {
-                producto.classList.add('resaltado');
-            } else {
-                producto.classList.remove('resaltado');
-            }
+            producto.classList.toggle('resaltado', nombreProducto.includes(terminoBusqueda));
         });
     }
-
     formularioBusqueda.addEventListener('submit', buscarProducto);
 });
 
 
-
-
-
-
-
+//LOGIN
 
 
 /*---------------------------------------*/
-
-
-/*Funcion generar codigo Descuento*/
-
-function generarCodigoDescuento() {
-    return Math.floor(Math.random() * 10000);
-}
-
-let porcentajeDescuento = 10;
-let codigoDescuento = generarCodigoDescuento();
-
-console.log("Porcentaje de descuento:", porcentajeDescuento + "%");
-console.log("Código de descuento generado:", codigoDescuento);
-
-
-
-
-
-/*---------------------------------------*/
-
-
-
-
-
-/*Consultar si hay productos sin stock*/
-
-const productosSinStock = productos.map(producto => producto.stock === 0);
-console.log("Productos sin stock:", productosSinStock);
-
-/*Me devolverá TRUE el que el stock sea 0*/
-
-
-
-
-
-/*---------------------------------------*/
-
-
 
 
 /*Contacto*/
@@ -188,8 +201,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.getElementById('respuesta-envio').innerHTML = "<strong>Gracias por contactarnos, " + nombre + "!</strong><br>Hemos recibido tu mensaje";
 
-        // Resetear el formulario
         form.reset();
 
     });
 });
+

@@ -87,26 +87,31 @@ font-family: 'Ubuntu', sans-serif;*/
 /*botones*/
 
 .cta {
-    display: flex;
+    display: inline-block;
+    align-items: center;
     position: relative;
     padding: 19px 22px;
     transition: all 0.2s ease;
     text-decoration: none;
     color: inherit;
-  }
-  .cta:before {
+    overflow: visible;
+}
+
+.cta:before {
     content: "";
     position: absolute;
-    top: 0;
     left: 0;
-    display: block;
+    transform: translateY(-50%);
     border-radius: 28px;
     background: rgba(255, 171, 157, 0.5);
     width: 56px;
     height: 56px;
     transition: all 0.3s ease;
-  }
-  .cta span {
+    z-index: -1;
+    align-items: center;
+}
+
+.cta span {
     position: relative;
     font-size: 16px;
     line-height: 18px;
@@ -114,8 +119,10 @@ font-family: 'Ubuntu', sans-serif;*/
     letter-spacing: 0.25em;
     text-transform: uppercase;
     vertical-align: middle;
-  }
-  .cta svg {
+    align-items: center;
+}
+
+.cta svg {
     position: relative;
     top: 0;
     margin-left: 10px;
@@ -126,18 +133,30 @@ font-family: 'Ubuntu', sans-serif;*/
     stroke-width: 2;
     transform: translateX(-5px);
     transition: all 0.3s ease;
-  }
-  .cta:hover:before {
-    width: 100%;
-    background: #ffab9d;
-  }
-  .cta:hover svg {
-    transform: translateX(0);
-  }
-  .cta:active {
-    transform: scale(0.96);
-  }
+}
 
+.cta:hover:before {
+    width: 50%;
+    background: #ffab9d;
+}
+
+.cta:hover svg {
+    transform: translateX(0);
+}
+
+.cta:active {
+    transform: scale(0.96);
+}
+
+.cta input,
+.cta button {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 1;
+    cursor: pointer;
+}
 
 
 .nuestros-productos {
@@ -151,13 +170,14 @@ font-family: 'Ubuntu', sans-serif;*/
     font-family: 'Open Sans', sans-serif, bold;
     padding-top: 2rem;
     cursor: none;
+    margin-bottom: 5%;
 }
 
 .nuestros-productos:hover {
     text-decoration: none;
     color: #6b4251;
     transition: 0.6s, color 0.6s;
-    
+
 }
 
 .nuestros-productos::after {
@@ -181,8 +201,9 @@ font-family: 'Ubuntu', sans-serif;*/
     width: 30em;
     height: 5em;
     margin-top: 5em;
-    margin-bottom: 2em;
     align-items: center;
+    position: relative;
+    margin: auto;
 }
 
 .form-inline input {
@@ -196,7 +217,6 @@ font-family: 'Ubuntu', sans-serif;*/
     outline: none;
     background-color: rgba(255, 255, 255, 0.829);
     display: flex;
-    margin: auto;
 }
 
 .form-inline button {
@@ -266,6 +286,16 @@ p {
 
 .css-button-gradient--1:active {
     top: 2px;
+}
+
+.my-validation-message::before {
+    display: none;
+}
+
+.my-validation-message i {
+    margin: 0 0.4em;
+    color: #f27474;
+    font-size: 1.4em;
 }
 
 
