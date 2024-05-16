@@ -114,10 +114,8 @@ document.addEventListener('DOMContentLoaded', function () {
             nuevoItem.remove();
         });
 
-        // Remover producto del carrito actual y actualizar localStorage
-        carritoActual = nuevoItem.filter(item => item.nombre !== nombre);
-        actualizarCarritoLocalStorage();
-    };
+
+    }
 
     // Event listener agregar productos al carrito
 
