@@ -77,6 +77,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalCarritoElement = document.getElementById('precio-total');
     let totalCarrito = 0;
 
+    // Obtener carrito de localStorage al cargar la página
+    let carritoLocalStorage = localStorage.getItem('productos');
+    let carritoActual = carritoLocalStorage ? JSON.parse(carritoLocalStorage) : [];
+
+    // Función para actualizar el carrito en localStorage
+    function actualizarCarritoLocalStorage() {
+        localStorage.setItem('productos', JSON.stringify(carritoActual));
+    }
+
+    // Función para agregar un producto al carrito
     function agregarAlCarrito(nombre, precio, cantidad) {
         const nuevoItem = document.createElement('li');
         nuevoItem.classList.add('list-group-item');
@@ -92,6 +102,10 @@ document.addEventListener('DOMContentLoaded', function () {
         totalCarrito += precio * cantidad;
         totalCarritoElement.textContent = `Total : $${totalCarrito.toFixed(2)}`
 
+        // Agregar producto al carrito actual y actualizar localStorage
+        carritoActual.push({ nombre, precio, cantidad });
+        actualizarCarritoLocalStorage();
+
 
         // Event listener para el ícono de la papelera (trash)
         nuevoItem.querySelector('.bi-trash').addEventListener('click', function () {
@@ -99,6 +113,10 @@ document.addEventListener('DOMContentLoaded', function () {
             totalCarritoElement.textContent = `$${totalCarrito.toFixed(2)}`;
             nuevoItem.remove();
         });
+
+        // Remover producto del carrito actual y actualizar localStorage
+        carritoActual = nuevoItem.filter(item => item.nombre !== nombre);
+        actualizarCarritoLocalStorage();
     };
 
     // Event listener agregar productos al carrito
@@ -109,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const nombre = item.querySelector('.nombre').textContent;
             const precio = parseFloat(item.querySelector('.precio').textContent.slice(1));
             const cantidad = parseInt(item.querySelector('.cantidad').value);
+
 
             // Verificar stock y agregar al carrito
             const productoSeleccionado = productos.find(producto => producto.nombre === nombre);
@@ -121,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+
     // Event listener para el botón "Pagar"
     const botonComprar = document.querySelector(".css-button-gradient");
     botonComprar.addEventListener("click", (event) => {
@@ -132,23 +152,23 @@ document.addEventListener('DOMContentLoaded', function () {
             showCancelButton: true,
             confirmButtonText: 'Sí, comprar',
             cancelButtonText: 'Cancelar',
-            input: 'text', // Agregar un campo de entrada de texto
-            inputPlaceholder: 'Ingresa tu dirección', // Texto de marcador de posición del campo de entrada
-            inputValidator: (value) => { // Validación del campo de entrada
+            input: 'text',
+            inputPlaceholder: 'Ingresa tu dirección',
+            inputValidator: (value) => {
                 if (!value) {
-                    return 'Por favor, ingresa tu dirección'; // Mostrar un mensaje de error si el campo está vacío
+                    return 'Por favor, ingresa tu dirección';
                 }
             },
             persistent: true
         }).then((result) => {
             if (result.isConfirmed) {
-                const direccion = result.value; // Obtener la dirección ingresada por el usuario
-                // Aquí puedes realizar una acción después de que se confirme la compra
+                const direccion = result.value;
                 console.log('Compra confirmada');
                 console.log('Dirección de envío:', direccion);
                 Swal.fire('¡Gracias por tu compra!', `En los proximos dias recibiras tu pedido en ${direccion}`, 'success');
-                // Aquí puedes realizar una acción después de que se confirme la compra
                 enviarDireccionAlServidor(direccion);
+                // Guardar el carrito en localStorage
+                localStorage.setItem('carrito', JSON.stringify(carritoActual));
             } else {
                 console.log('Compra cancelada');
                 Swal.fire('Compra cancelada', 'No se ha enviado el formulario', 'error');
@@ -156,6 +176,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    //almacenar en local storage direccion
+    function enviarDireccionAlServidor(direccion) {
+        localStorage.setItem('direccion', direccion);
+    };
 
 
     // Event listener para el botón de descuento
@@ -207,9 +231,6 @@ document.addEventListener('DOMContentLoaded', function () {
     formularioBusqueda.addEventListener('submit', buscarProducto);
 });
 
-
-
-//LOGIN
 
 
 /*---------------------------------------*/
