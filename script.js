@@ -78,12 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
     let totalCarrito = 0;
 
     // Obtener carrito de localStorage al cargar la página
-    let carritoLocalStorage = localStorage.getItem('productos');
+    let carritoLocalStorage = localStorage.getItem('carrito');
     let carritoActual = carritoLocalStorage ? JSON.parse(carritoLocalStorage) : [];
 
     // Función para actualizar el carrito en localStorage
     function actualizarCarritoLocalStorage() {
-        localStorage.setItem('productos', JSON.stringify(carritoActual));
+        localStorage.setItem('carrito', JSON.stringify(carritoActual));
     }
 
     // Función para agregar un producto al carrito
@@ -222,7 +222,6 @@ document.addEventListener('DOMContentLoaded', function () {
             producto.classList.toggle('resaltado', coincide);
 
             if (coincide) {
-                // Desplaza la pantalla hacia el elemento resaltado
                 producto.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
