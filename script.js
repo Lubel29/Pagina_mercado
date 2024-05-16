@@ -1,38 +1,54 @@
 /*---------------------------------------*/
 
-//Bienvenida 
+// //Bienvenida 
+document.addEventListener('DOMContentLoaded', function () {
+    const usuarioGuardado = localStorage.getItem('usuario');
 
-document.addEventListener('DOMContentLoaded', () => {
+    if (usuarioGuardado) {
+        mostrarMensajeBienvenida(usuarioGuardado);
+    } else {
+        mostrarFormularioLogin();
+    }
+});
+
+function mostrarFormularioLogin() {
     Swal.fire({
-        title: 'Ingrese su nombre',
-        input: 'text',
-        customClass: {
-            validationMessage: 'my-validation-message',
-        },
-        inputValidator: (value) => {
-            if (!value) {
-                return '<i class="fa fa-info-circle"></i> Your name is required';
+        title: 'Iniciar Sesión',
+        html: `
+            <input type="text" id="login" class="swal2-input" placeholder="Usuario">
+            <input type="password" id="password" class="swal2-input" placeholder="Contraseña">
+        `,
+        confirmButtonText: 'Iniciar Sesión',
+        focusConfirm: false,
+        preConfirm: () => {
+            const login = Swal.getPopup().querySelector('#login').value;
+            const password = Swal.getPopup().querySelector('#password').value;
+            if (!login || !password) {
+                Swal.showValidationMessage(`Por favor ingrese usuario y contraseña`);
             }
-        },
-        preConfirm: (value) => {
-            if (value) {
-                // Almacenar el nombre del usuario
-                localStorage.setItem('user', value);
-
-                // Mostrar cartel de bienvenida
-                Swal.fire({
-                    title: 'Bienvenido',
-                    text: `Bienvenido ${value} a MarketPrime, disfruta tu compra`,
-                    icon: 'success'
-                }).then(() => {
-                    // Actualizar el mensaje en el DOM después de mostrar el cartel
-                    const bienvenida = document.getElementById('bienvenida');
-                    bienvenida.textContent = `Bienvenid@ ${value}`;
-                });
-            }
+            return { login: login, password: password };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { login } = result.value;
+            localStorage.setItem('usuario', login);
+            mostrarMensajeBienvenida(login);
         }
     });
-});
+}
+
+function mostrarMensajeBienvenida(usuario) {
+    Swal.fire({
+        title: 'Bienvenido',
+        text: `Bienvenido ${usuario} a MarketPrime, disfruta tu compra`,
+        icon: 'success'
+    }).then(() => {
+        const bienvenida = document.getElementById('bienvenida');
+        bienvenida.textContent = `Bienvenid@ ${usuario}`;
+    });
+};
+
+
 
 
 
@@ -67,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         nuevoItem.innerHTML = `
             <p>${nombre}</p>
             <span>Cantidad: ${cantidad}</span>
+            <hr>
             <span>Precio por unidad / por kg: $${precio.toFixed(2)}</span>
             <i class="bi bi-trash"></i>`
             ;
@@ -101,51 +118,61 @@ document.addEventListener('DOMContentLoaded', function () {
             ) : (
                 productoSeleccionado ? alert('El producto no está disponible') : alert('El producto no cuenta con stock')
             );
-
-            //refrescar el carrito al hacer click en comprar
-            document.querySelector(".css-button-gradient").addEventListener("click", () => {
-                location.reload();
-            });
         });
     });
-
 
     // Event listener para el botón "Pagar"
-    document.querySelectorAll(".css-button-gradient").forEach((boton) => {
-        boton.addEventListener("click", () => {
-            alert("Tu pedido ha sido procesado con éxito.");
-            console.log("se hizo click en pagar");
+    const botonComprar = document.querySelector(".css-button-gradient");
+    botonComprar.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        Swal.fire({
+            title: '¿Quieres comprar este producto? Ingresa tu dirección de envío',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, comprar',
+            cancelButtonText: 'Cancelar',
+            input: 'text', // Agregar un campo de entrada de texto
+            inputPlaceholder: 'Ingresa tu dirección', // Texto de marcador de posición del campo de entrada
+            inputValidator: (value) => { // Validación del campo de entrada
+                if (!value) {
+                    return 'Por favor, ingresa tu dirección'; // Mostrar un mensaje de error si el campo está vacío
+                }
+            },
+            persistent: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const direccion = result.value; // Obtener la dirección ingresada por el usuario
+                // Aquí puedes realizar una acción después de que se confirme la compra
+                console.log('Compra confirmada');
+                console.log('Dirección de envío:', direccion);
+                Swal.fire('¡Gracias por tu compra!', `En los proximos dias recibiras tu pedido en ${direccion}`, 'success');
+                // Aquí puedes realizar una acción después de que se confirme la compra
+                enviarDireccionAlServidor(direccion);
+            } else {
+                console.log('Compra cancelada');
+                Swal.fire('Compra cancelada', 'No se ha enviado el formulario', 'error');
+            }
         });
     });
+
+
 
     // Event listener para el botón de descuento
     let descuentoAplicado = false;
     const aplicarDescuentoButton = document.getElementById("aplicarDescuentoButton");
     const codigoDescuentoInput = document.getElementById("code");
-    // Agrega un event listener para el evento de clic en el botón
     aplicarDescuentoButton.addEventListener("click", () => {
-        // Obtén el valor del campo de entrada del código de descuento
         const codigoDescuento = codigoDescuentoInput.value.trim();
-
-        // Verifica si el descuento ya ha sido aplicado
         if (descuentoAplicado) {
             alert("El código de descuento ya ha sido aplicado.");
         } else {
-            // Verifica si el código de descuento ingresado es válido
             if (codigoDescuento === "MARKET10") {
-                // Calcula el descuento del 10% y actualiza el total del carrito
                 totalCarrito -= totalCarrito * 0.1;
-
-                // Actualiza el elemento que muestra el total del carrito
-                totalCarritoElement.textContent = totalCarrito.toFixed(2);
-
-                // Marca que el descuento ha sido aplicado
+                totalCarritoElement.textContent = `$${totalCarrito.toFixed(2)}`;
                 descuentoAplicado = true;
-
-                // Muestra un mensaje de éxito
                 alert("Descuento aplicado con éxito.");
             } else {
-                // Muestra un mensaje si el código de descuento ingresado no es válido
                 alert("El código de descuento ingresado no es válido.");
             }
         }
@@ -154,14 +181,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
 //Buscador de productos-Resaltar
-
 document.addEventListener('DOMContentLoaded', function () {
     const formularioBusqueda = document.querySelector('.form-inline');
     const campoBusqueda = formularioBusqueda.querySelector('.form-control');
     const productos = document.querySelectorAll('.item');
+
     function buscarProducto(event) {
         event.preventDefault();
 
@@ -169,11 +194,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         productos.forEach(producto => {
             const nombreProducto = producto.querySelector('.nombre').textContent.toLowerCase();
-            producto.classList.toggle('resaltado', nombreProducto.includes(terminoBusqueda));
+            const coincide = nombreProducto.includes(terminoBusqueda);
+            producto.classList.toggle('resaltado', coincide);
+
+            if (coincide) {
+                // Desplaza la pantalla hacia el elemento resaltado
+                producto.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     }
+
     formularioBusqueda.addEventListener('submit', buscarProducto);
 });
+
 
 
 //LOGIN

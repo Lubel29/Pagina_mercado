@@ -88,6 +88,7 @@ font-family: 'Ubuntu', sans-serif;*/
 
 .cta {
     display: inline-block;
+    margin-bottom: 5px;
     align-items: center;
     position: relative;
     padding: 19px 22px;
@@ -98,6 +99,7 @@ font-family: 'Ubuntu', sans-serif;*/
 }
 
 .cta:before {
+    margin-bottom: 5px;
     content: "";
     position: absolute;
     left: 0;
@@ -112,6 +114,7 @@ font-family: 'Ubuntu', sans-serif;*/
 }
 
 .cta span {
+    margin-top: 5px;
     position: relative;
     font-size: 16px;
     line-height: 18px;
@@ -123,6 +126,7 @@ font-family: 'Ubuntu', sans-serif;*/
 }
 
 .cta svg {
+    margin-bottom: 5px;
     position: relative;
     top: 0;
     margin-left: 10px;
@@ -136,6 +140,7 @@ font-family: 'Ubuntu', sans-serif;*/
 }
 
 .cta:hover:before {
+    margin-bottom: 5px;
     width: 50%;
     background: #ffab9d;
 }
@@ -148,14 +153,42 @@ font-family: 'Ubuntu', sans-serif;*/
     transform: scale(0.96);
 }
 
-.cta input,
-.cta button {
-    margin-left: 10px;
-    padding: 5px;
+.cta input{
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    vertical-align: middle;
+    align-items: center;
+    width: 50%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 2px;
     border: 1px solid #ccc;
     border-radius: 4px;
     z-index: 1;
+    cursor:auto;
+}
+
+#aplicarDescuentoButton{
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-size: 120% auto;
+    background-image: linear-gradient(315deg, rgba(92, 109, 206, 0.9) 0%, #c587c7 75%);
+    display: flex;
+    margin-top: 10px;
 }
 
 
@@ -299,6 +332,8 @@ p {
 }
 
 
+
+
 /*Productos*/
 
 .caja {
@@ -372,41 +407,6 @@ p {
     color: #555;
 }
 
-.order-arrow {
-    border: solid #555;
-    border-width: 0 1px 1px 0;
-    display: inline-block;
-    padding: 3px;
-    transform: rotate(45deg);
-    margin-left: 5px;
-}
-
-.order-options {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-top: none;
-    border-radius: 0 0 5px 5px;
-    display: none;
-}
-
-.order-option {
-    display: block;
-    padding: 10px;
-    width: 100%;
-    text-align: left;
-    color: #555;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.order-option:hover,
-.order-option.selected {
-    background-color: #f0f0f0;
-}
 
 .flex-container {
     align-items: center;
@@ -428,6 +428,7 @@ p {
 
 }
 
+
 .cart-content {
     position: sticky;
     top: 15px;
@@ -436,7 +437,6 @@ p {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-right: 50px;
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -447,14 +447,31 @@ p {
 }
 
 
-.cart-list {
-    list-style: none;
-    padding: 0;
+.list-group{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.cart-list li {
-    margin-bottom: 1px;
+.list-group span{
+    font-size: large;
+    font-weight: bolder;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 4%;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
+
+
+#precio-total{
+    font-size: large;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
 
 .item label {
     color: var(--blanco);
@@ -467,6 +484,7 @@ p {
 .resaltado {
     background-color: yellow;
 }
+
 
 
 
