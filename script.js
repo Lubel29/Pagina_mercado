@@ -111,10 +111,16 @@ document.addEventListener('DOMContentLoaded', function () {
         nuevoItem.querySelector('.bi-trash').addEventListener('click', function () {
             totalCarrito -= precio * cantidad;
             totalCarritoElement.textContent = `$${totalCarrito.toFixed(2)}`;
+
+            // Eliminar el producto del carrito actual
+            const index = carritoActual.findIndex(item => item.nombre === nombre);
+            if (index !== -1) {
+                carritoActual.splice(index, 1);
+                actualizarCarritoLocalStorage();
+            }
+
             nuevoItem.remove();
         });
-
-
     }
 
     // Event listener agregar productos al carrito
