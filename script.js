@@ -1,5 +1,4 @@
 /*---------------------------------------*/
-
 // //Bienvenida 
 document.addEventListener('DOMContentLoaded', function () {
     const usuarioGuardado = localStorage.getItem('usuario');
@@ -67,7 +66,6 @@ let productos = [
     { nombre: "Frutilla", precio: 2600, stock: 70 },
 ];
 
-console.log(productos);
 
 /*Funcion carrito*/
 
@@ -101,6 +99,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
         totalCarrito += precio * cantidad;
         totalCarritoElement.textContent = `Total : $${totalCarrito.toFixed(2)}`
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch
+            fetch('datos.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se pudo cargar el archivo');
+                    }
+                    return response.json();
+                })
+                .then(productos => {
+                    console.log('Productos cargados correctamente:', productos);
+                    agregarAlCarrito(productos);
+                })
+                .catch(error => {
+                    console.error('Error al cargar los productos:', error);
+                });
+        });
 
         // Agregar producto al carrito actual y actualizar localStorage
         carritoActual.push({ nombre, precio, cantidad });
@@ -169,10 +186,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 const direccion = result.value;
                 console.log('Compra confirmada');
                 console.log('Dirección de envío:', direccion);
-                Swal.fire('¡Gracias por tu compra!', `En los proximos dias recibiras tu pedido en ${direccion}`, 'success');
-                enviarDireccionAlServidor(direccion);
-                // Guardar el carrito en localStorage
-                localStorage.setItem('carrito', JSON.stringify(carritoActual));
+                setTimeout(() => {
+                    Swal.fire('¡Gracias por tu compra!', `En los próximos días recibirás tu pedido en ${direccion}`, 'success');
+                    enviarDireccionAlServidor(direccion);
+                    localStorage.setItem('carrito', JSON.stringify(carritoActual));
+                }, 2000);
+                clearTimeout();
             } else {
                 console.log('Compra cancelada');
                 Swal.fire('Compra cancelada', 'No se ha enviado el formulario', 'error');
@@ -241,7 +260,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /*Contacto*/
 
-let nombre, email, telefono, mensaje;
+function enviarDatosContacto(nombre, email, telefono, mensaje) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const exito = Math.random() > 0.2;
+            if (exito) {
+                resolve('Datos enviados exitosamente');
+            } else {
+                reject('Error al enviar los datos');
+            }
+        }, 2000);
+    });
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('formContact');
@@ -254,12 +285,19 @@ document.addEventListener('DOMContentLoaded', function () {
         let telefono = document.getElementById('phone').value;
         let mensaje = document.getElementById('message').value;
 
-        console.log("Enviando datos al servidor:", nombre, email, telefono, mensaje);
+        console.log("Intentando enviar datos al servidor:", nombre, email, telefono, mensaje);
 
-        document.getElementById('respuesta-envio').innerHTML = "<strong>Gracias por contactarnos, " + nombre + "!</strong><br>Hemos recibido tu mensaje";
-
-        form.reset();
-
+        // Llamar a la función que retorna una promesa
+        enviarDatosContacto(nombre, email, telefono, mensaje)
+            .then((resultado) => {
+                console.log(resultado);
+                document.getElementById('respuesta-envio').innerHTML = `<strong>Gracias por contactarnos, ${nombre}!</strong><br>Hemos recibido tu mensaje`;
+                form.reset();
+            })
+            .catch((error) => {
+                console.error(error);
+                document.getElementById('respuesta-envio').innerHTML = `<strong>Hubo un problema al enviar tu mensaje, ${nombre}. Por favor, intenta nuevamente.</strong>`;
+            });
     });
 });
 

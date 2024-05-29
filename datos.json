@@ -1,0 +1,42 @@
+[
+    {
+        "nombre": "Pan de salvado",
+        "precio": 1800,
+        "stock": 50
+    },
+    {
+        "nombre": "Manzana",
+        "precio": 1500,
+        "stock": 80
+    },
+    {
+        "nombre": "Naranja",
+        "precio": 1800,
+        "stock": 100
+    },
+    {
+        "nombre": "Arandanos",
+        "precio": 2000,
+        "stock": 8
+    },
+    {
+        "nombre": "Jugo de frutas",
+        "precio": 2500,
+        "stock": 25
+    },
+    {
+        "nombre": "Granola",
+        "precio": 2800,
+        "stock": 0
+    },
+    {
+        "nombre": "Banana",
+        "precio": 1600,
+        "stock": 50
+    },
+    {
+        "nombre": "Frutilla",
+        "precio": 2600,
+        "stock": 70
+    }
+]
