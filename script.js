@@ -47,10 +47,6 @@ function mostrarMensajeBienvenida(usuario) {
     });
 };
 
-
-
-
-
 /*---------------------------------------*/
 
 
